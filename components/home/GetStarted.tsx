@@ -1,23 +1,24 @@
 import Link from "next/link";
+import { ArrowRight, Check, PenTool } from "lucide-react";
 
 const steps = [
   {
-    number: "01",
+    number: "1",
     title: "Login",
     description: "Sign in using your Google account.",
   },
   {
-    number: "02",
+    number: "2",
     title: "Choose Branch",
     description: "Select your engineering branch.",
   },
   {
-    number: "03",
+    number: "3",
     title: "Choose Semester",
     description: "Open your current semester.",
   },
   {
-    number: "04",
+    number: "4",
     title: "Start Learning",
     description: "Access notes, labs, PYQs and more.",
   },
@@ -34,54 +35,53 @@ const benefits = [
 
 export default function GetStarted() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center">
-          <span className="inline-block border-2 border-black bg-yellow-300 px-5 py-2 text-sm font-black shadow-[4px_4px_0_#000]">
-            🚀 GET STARTED
+    <section className="py-24 relative scroll-reveal">
+      <div className="mx-auto max-w-7xl px-6 md:px-12 relative z-10">
+        <div className="text-center flex flex-col items-center mb-16">
+          <span className="font-bold text-xs uppercase tracking-wider text-accent-blue mb-4">
+            Get Started
           </span>
 
-          <h2 className="mt-8 text-5xl font-black md:text-6xl">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-primary mb-6 max-w-4xl leading-tight">
             Start Your Learning Journey
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-black">
+          <p className="mx-auto text-lg text-text-secondary font-medium max-w-3xl">
             Login once and unlock all semester-wise academic resources.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
           {/* Left */}
-
-          <div className="rounded-3xl border-4 border-black bg-blue-300 p-10 shadow-[8px_8px_0_#000]">
-            <h3 className="text-3xl font-black">
+          <div className="bg-white dark:bg-[#1A1A1A] rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10 relative">
+            <h3 className="text-3xl font-extrabold text-text-primary mb-4">
               Login Required
             </h3>
 
-            <p className="mt-5 leading-8">
+            <p className="text-lg text-text-secondary font-medium mb-10">
               To access academic resources, simply login and follow this path.
             </p>
 
-            <div className="mt-10 space-y-5">
+            <div className="space-y-6 relative">
+              {/* Connecting line */}
+              <div className="absolute left-6 top-6 bottom-6 w-[2px] bg-border/20 -z-10"></div>
+              
               {steps.map((step) => (
                 <div
                   key={step.number}
-                  className="rounded-2xl border-2 border-black bg-white p-5"
+                  className="bg-surface-mint/30 dark:bg-surface-mint/10 border border-border/10 rounded-2xl p-6 flex items-center gap-6 shadow-sm transition-transform hover:-translate-y-1"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-yellow-300 font-black">
-                      {step.number}
-                    </div>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-mint text-accent-black font-extrabold text-xl shadow-sm">
+                    {step.number}
+                  </div>
 
-                    <div>
-                      <h4 className="font-black text-xl">
-                        {step.title}
-                      </h4>
-
-                      <p className="text-black">
-                        {step.description}
-                      </p>
-                    </div>
+                  <div>
+                    <h4 className="text-xl font-extrabold text-text-primary mb-1">
+                      {step.title}
+                    </h4>
+                    <p className="text-sm font-medium text-text-secondary">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -89,32 +89,36 @@ export default function GetStarted() {
           </div>
 
           {/* Right */}
+          <div className="bg-surface-yellow rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10 flex flex-col justify-between">
+            <div>
+              <h3 className="text-3xl font-extrabold text-text-primary mb-4">
+                Why Create an Account?
+              </h3>
 
-          <div className="rounded-3xl border-4 border-black bg-green-300 p-10 shadow-[8px_8px_0_#000]">
-            <h3 className="text-3xl font-black">
-              Why Create an Account?
-            </h3>
+              <p className="text-lg text-text-secondary font-medium mb-10">
+                Your free account unlocks everything available in BVRIT Hub.
+              </p>
 
-            <p className="mt-5 leading-8">
-              Your free account unlocks everything available in BVRIT Hub.
-            </p>
-
-            <div className="mt-10 space-y-4">
-              {benefits.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl border-2 border-black bg-white px-5 py-4 font-bold"
-                >
-                  ✅ {item}
-                </div>
-              ))}
+              <div className="space-y-4">
+                {benefits.map((item, i) => (
+                  <div
+                    key={item}
+                    className="bg-white/60 dark:bg-black/10 border border-white/20 rounded-2xl py-4 px-6 flex items-center gap-4 transition-transform hover:-translate-y-1"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-white dark:bg-black/20 flex items-center justify-center shrink-0 shadow-sm border border-white/20">
+                      <PenTool size={16} strokeWidth={2.5} className="text-accent-black" />
+                    </div>
+                    <span className="text-text-primary font-bold text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <Link
-              href="/login"
-              className="mt-10 inline-flex rounded-xl border-4 border-black bg-black px-8 py-4 text-lg font-black text-white shadow-[6px_6px_0_#fff] transition hover:-translate-y-1"
+              href="/register"
+              className="bg-accent-black text-bg font-bold text-sm rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all px-8 py-4 w-max mt-12 flex items-center gap-3"
             >
-              Continue with Google →
+              Get Started <ArrowRight size={18} strokeWidth={2.5} />
             </Link>
           </div>
         </div>

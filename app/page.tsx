@@ -1,32 +1,20 @@
+import Loader from "@/components/home/Loader";
 import Hero from "@/components/home/Hero";
-import FreshersFeed from "@/components/home/FreshersFeed";
-import StarterPackPreview from "@/components/home/StarterPackPreview";
-import BeyondAcademics from "@/components/home/BeyondAcademics";
-import GetStarted from "@/components/home/GetStarted";
 import AboutSection from "@/components/home/AboutSection";
+import EverythingYouNeed from "@/components/home/EverythingYouNeed";
 import LoginBenefits from "@/components/home/LoginBenefits";
-import Community from "@/components/home/Community";
+import GetStarted from "@/components/home/GetStarted";
 import Footer from "@/components/home/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-white">
+    <main className="min-h-screen bg-bg relative">
+      <Loader />
       <Hero />
-
-      <FreshersFeed />
-
-      <StarterPackPreview />
-
-      <BeyondAcademics />
-
-      <GetStarted />
-
       <AboutSection />
-
+      <EverythingYouNeed />
       <LoginBenefits />
-
-      <Community />
-
+      <GetStarted />
       <Footer />
     </main>
   );

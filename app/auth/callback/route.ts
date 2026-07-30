@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
@@ -12,7 +13,8 @@ export async function GET(request: Request) {
     );
   }
 
-  const supabase = await createClient();
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
   const { error } = await supabase.auth.exchangeCodeForSession(code);
 
@@ -27,13 +29,33 @@ export async function GET(request: Request) {
   } = await supabase.auth.getUser();
 
   if (user) {
-    await supabase.from("profiles").upsert({
+    let profileData: any = {
       id: user.id,
       name: user.user_metadata.full_name,
       email: user.email,
       avatar_url: user.user_metadata.avatar_url,
-    });
+    };
+
+    const registerCookie = cookieStore.get("bvrithub_register");
+    if (registerCookie?.value) {
+      try {
+        const parsedData = JSON.parse(decodeURIComponent(registerCookie.value));
+        profileData = {
+          ...profileData,
+          name: parsedData.name || profileData.name,
+          branch: parsedData.branch,
+          year: parsedData.year,
+        };
+      } catch (err) {
+        console.error("Failed to parse registration cookie", err);
+      }
+    }
+
+    await supabase.from("profiles").upsert(profileData);
   }
+
+  // Clear the cookie so it doesn't apply on future logins
+  cookieStore.delete("bvrithub_register");
 
   return NextResponse.redirect(new URL(next, requestUrl.origin));
 }

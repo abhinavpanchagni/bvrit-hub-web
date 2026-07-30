@@ -1,9 +1,11 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export async function bookmarkResource(resourceId: string) {
-  const supabase = await createClient();
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
   const {
     data: { user },
@@ -18,7 +20,8 @@ export async function bookmarkResource(resourceId: string) {
 }
 
 export async function markCompleted(resourceId: string) {
-  const supabase = await createClient();
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
   const {
     data: { user },

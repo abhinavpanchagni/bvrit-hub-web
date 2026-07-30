@@ -1,7 +1,9 @@
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export async function getResources() {
-  const supabase = await createClient();
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
   const { data, error } = await supabase
     .from("resources")

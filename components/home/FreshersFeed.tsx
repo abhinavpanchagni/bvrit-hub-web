@@ -1,90 +1,47 @@
-import Link from "next/link";
+"use client";
 
-const updates = [
-  {
-    title: "How Engineering Works",
-    description: "Start here if you're new to engineering.",
-    href: "/freshers/engineering",
-    badge: "START HERE",
-    color: "bg-yellow-300",
-  },
-  {
-    title: "Understand SGPA & CGPA",
-    description: "Learn how marks and credits are calculated.",
-    href: "/freshers/sgpa",
-    badge: "IMPORTANT",
-    color: "bg-pink-300",
-  },
-  {
-    title: "Attendance Rules",
-    description: "Know the attendance requirements before classes begin.",
-    href: "/freshers/attendance",
-    badge: "READ",
-    color: "bg-green-300",
-  },
-  {
-    title: "Transport & Hostel",
-    description: "Bus routes, hostel facilities and campus guidance.",
-    href: "/freshers/transport",
-    badge: "NEW",
-    color: "bg-blue-300",
-  },
+import Link from "next/link";
+import { Bell, ArrowRight } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const notifications = [
+  { title: "How Engineering Works", time: "2h ago", color: "bg-surface-peach", text: "text-orange-700 dark:text-orange-300" },
+  { title: "Understand SGPA & CGPA", time: "5h ago", color: "bg-surface-mint", text: "text-emerald-700 dark:text-emerald-300" },
+  { title: "Attendance Rules Update", time: "1d ago", color: "bg-surface-lavender", text: "text-purple-700 dark:text-purple-300" },
 ];
 
 export default function FreshersFeed() {
+  const revealRef = useScrollReveal();
+
   return (
-    <section className="border-y-4 border-black bg-white py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 flex items-end justify-between">
-          <div>
-            <span className="inline-block border-2 border-black bg-red-300 px-4 py-2 text-sm font-black shadow-[4px_4px_0_#000]">
-              🔥 FRESHERS FEED
-            </span>
-
-            <h2 className="mt-6 text-5xl font-black">
-              Check These First.
-            </h2>
-
-            <p className="mt-4 max-w-2xl text-lg text-black">
-              Important guides every BVRIT fresher should read before the first
-              semester.
-            </p>
-          </div>
-
-          <Link
-            href="/freshers"
-            className="hidden rounded-xl border-4 border-black bg-black px-6 py-3 font-black text-white shadow-[6px_6px_0_#facc15] lg:block"
-          >
-            View All →
-          </Link>
+    <div ref={revealRef} className="bg-white dark:bg-[#1A1A1A] rounded-3xl p-6 md:p-8 flex flex-col h-full scroll-reveal border border-border/10 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 shadow-sm">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary mb-1">Freshers Feed</h2>
+          <p className="text-text-secondary font-medium text-sm">Updates & essential guides.</p>
         </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {updates.map((item) => (
-            <Link key={item.title} href={item.href}>
-              <div
-                className={`${item.color} h-full rounded-3xl border-4 border-black p-6 shadow-[8px_8px_0_#000] transition duration-200 hover:-translate-y-2 hover:shadow-[10px_10px_0_#000]`}
-              >
-                <span className="inline-block rounded-full border-2 border-black bg-white px-3 py-1 text-xs font-black">
-                  {item.badge}
-                </span>
-
-                <h3 className="mt-6 text-2xl font-black leading-tight">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 leading-7 text-black">
-                  {item.description}
-                </p>
-
-                <div className="mt-8 font-black">
-                  Read Guide →
-                </div>
-              </div>
-            </Link>
-          ))}
+        <div className="w-10 h-10 rounded-full bg-surface-yellow flex items-center justify-center text-accent-black shrink-0">
+          <Bell size={18} strokeWidth={2.5} />
         </div>
       </div>
-    </section>
+
+      <div className="flex flex-col gap-4 mt-auto">
+        {notifications.map((item, i) => (
+          <Link key={i} href="#" className="flex items-start gap-4 p-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${item.color} ${item.text} font-bold text-sm shadow-sm group-hover:scale-105 transition-transform`}>
+              {item.title.charAt(0)}
+            </div>
+            <div className="flex-1">
+              <h3 className="font-bold text-text-primary text-sm leading-tight mb-1">{item.title}</h3>
+              <p className="text-text-secondary text-xs font-medium">{item.time}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+      
+      <Link href="/freshers" className="mt-6 flex items-center justify-center gap-2 text-sm font-bold text-bg bg-accent-black py-3 rounded-full hover:scale-[1.02] shadow-sm transition-all">
+        View All Guides <ArrowRight size={16} />
+      </Link>
+    </div>
   );
 }

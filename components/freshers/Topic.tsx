@@ -12,20 +12,20 @@ export default function Topic({
   children,
 }: TopicProps) {
   return (
-    <section className="mb-10 rounded-[32px] border-4 border-black bg-white p-10 shadow-[10px_10px_0_#000]">
-      <span className="rounded-full border-2 border-black bg-blue-600 px-4 py-2 text-sm font-bold text-white">
+    <section className="mb-10 rounded-[2.5rem] border border-border/10 bg-white dark:bg-[#1A1A1A] p-10 md:p-14 shadow-sm">
+      <span className="rounded-xl border border-border/10 bg-bg px-4 py-2 text-xs font-bold uppercase tracking-wider text-text-secondary inline-block mb-6">
         {badge}
       </span>
 
-      <h2 className="mt-6 text-5xl font-black">
+      <h2 className="text-4xl font-extrabold text-text-primary leading-tight">
         {title}
       </h2>
 
-      <p className="mt-5 text-lg text-gray-700600">
+      <p className="mt-5 text-lg font-medium text-text-secondary leading-relaxed">
         {description}
       </p>
 
-      <div className="mt-8">
+      <div className="mt-10">
         {children}
       </div>
     </section>

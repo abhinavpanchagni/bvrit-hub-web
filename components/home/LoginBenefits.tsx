@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 
 const benefits = [
   "Save your learning progress",
@@ -11,47 +12,50 @@ const benefits = [
 
 export default function LoginBenefits() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="py-24 relative z-10 scroll-reveal">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left */}
+          <div className="bg-surface-peach rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10 flex flex-col justify-between">
+            <div>
+              <span className="font-bold text-xs uppercase tracking-wider bg-white/60 dark:bg-black/10 border border-white/20 text-accent-black px-4 py-2 rounded-xl inline-block mb-8">
+                Login Required
+              </span>
 
-          <div className="rounded-3xl border-4 border-black bg-yellow-300 p-10 shadow-[8px_8px_0_#000]">
-            <span className="inline-block rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-black">
-              LOGIN REQUIRED
-            </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-text-primary mb-4 leading-tight">
+                Create a FREE Account
+              </h2>
 
-            <h2 className="mt-8 text-5xl font-black">
-              Create a FREE Account
-            </h2>
-
-            <p className="mt-6 text-lg leading-8">
-              Login once to unlock all semester-wise academic resources inside
-              BVRIT Hub.
-            </p>
+              <p className="text-lg text-text-secondary font-medium mb-12">
+                Login once to unlock all semester-wise academic resources inside
+                BVRIT Hub.
+              </p>
+            </div>
 
             <Link
               href="/login"
-              className="mt-10 inline-flex rounded-xl border-4 border-black bg-black px-8 py-4 text-lg font-black text-white shadow-[6px_6px_0_#fff] transition hover:-translate-y-1"
+              className="bg-accent-black text-bg font-bold text-sm rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all px-8 py-4 w-max flex items-center gap-3"
             >
-              Continue with Google →
+              Continue to Login <ArrowRight size={18} strokeWidth={2.5} />
             </Link>
           </div>
 
           {/* Right */}
-
-          <div className="rounded-3xl border-4 border-black bg-white p-10 shadow-[8px_8px_0_#000]">
-            <h3 className="text-3xl font-black">
+          <div className="bg-surface-lavender rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10">
+            <h3 className="text-3xl font-extrabold text-text-primary mb-10">
               Benefits
             </h3>
 
-            <div className="mt-8 space-y-5">
-              {benefits.map((item) => (
+            <div className="space-y-4">
+              {benefits.map((item, i) => (
                 <div
                   key={item}
-                  className="rounded-xl border-2 border-black bg-green-200 px-5 py-4 text-lg font-bold"
+                  className="bg-white/60 dark:bg-black/10 border border-white/20 py-4 px-6 rounded-2xl flex items-center gap-4 transition-transform hover:-translate-y-1"
                 >
-                  ✅ {item}
+                  <div className="w-8 h-8 rounded-full bg-white dark:bg-black/20 flex items-center justify-center shrink-0 shadow-sm border border-white/20">
+                    <Check size={16} strokeWidth={3} className="text-accent-black" />
+                  </div>
+                  <span className="text-text-primary font-bold text-sm">{item}</span>
                 </div>
               ))}
             </div>

@@ -1,145 +1,59 @@
-import Link from "next/link";
+"use client";
+
+import { CheckCircle2, Circle, Clock } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const timeline = [
+  { title: "Mid-Term Exams", date: "Nov 15 - Nov 20", status: "completed" },
+  { title: "Lab Internals", date: "Dec 01 - Dec 05", status: "current" },
+  { title: "Final Semester Exams", date: "Dec 15 - Dec 28", status: "upcoming" },
+];
 
 export default function BeyondAcademics() {
+  const revealRef = useScrollReveal();
+
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-
-      <div className="mb-12">
-
-        <span className="rounded-xl border-2 border-black bg-[#B7C6C2] px-5 py-2 font-bold shadow-[5px_5px_0px_#000]">
-          BEYOND ACADEMICS
-        </span>
-
-        <h2 className="mt-6 text-6xl font-black leading-none text-black md:text-7xl">
-          CAMPUS
-          <br />
-          LIFE.
-        </h2>
-
-        <p className="mt-6 max-w-3xl text-xl leading-8 text-black">
-          College is more than lectures and exams. Discover student clubs,
-          startup opportunities, leadership programs and connect with talented
-          students across BVRIT.
-        </p>
-
+    <div ref={revealRef} className="bg-surface-mint rounded-3xl p-6 md:p-8 flex flex-col h-full scroll-reveal hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary mb-1">My Semester</h2>
+          <p className="text-text-secondary font-medium text-sm">B.Tech 1st Year • Sem 1</p>
+        </div>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
-
-        {/* CLUBS */}
-
-        <div className="rounded-3xl border-2 border-black bg-[#FFE17C] p-8 shadow-[8px_8px_0px_#000] transition hover:-translate-y-1">
-
-          <div className="flex items-center justify-between">
-
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-black bg-white text-4xl">
-              🎯
-            </div>
-
-            <span className="rounded-full border-2 border-black bg-white px-4 py-2 font-bold">
-              NEW
-            </span>
-
-          </div>
-
-          <h3 className="mt-8 text-5xl font-black text-black">
-            Student Clubs
-          </h3>
-
-          <p className="mt-5 text-lg leading-8 text-black">
-            Explore technical clubs, Toastmasters, Entrepreneurship Cell,
-            ACM, CSI, Coding Club, NSS, Dance Club, Music Club and VVLF.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-
-            {[
-              "ACM",
-              "CSI",
-              "Toastmasters",
-              "VVLF",
-              "NSS",
-              "Coding Club",
-            ].map((item) => (
-              <span
-                key={item}
-                className="rounded-full border-2 border-black bg-white px-4 py-2 font-bold"
-              >
-                {item}
-              </span>
-            ))}
-
-          </div>
-
-          <div className="mt-10 flex gap-4">
-
-            <Link
-              href="/clubs"
-              className="rounded-xl border-2 border-black bg-black px-7 py-4 font-bold text-white transition hover:-translate-y-1"
-            >
-              Explore Clubs →
-            </Link>
-
-          </div>
-
+      <div className="bg-white/60 dark:bg-black/10 rounded-2xl p-5 mb-8 shadow-sm border border-white/20">
+        <div className="flex justify-between text-sm font-bold text-text-primary mb-2">
+          <span>Semester Progress</span>
+          <span>65%</span>
         </div>
-
-        {/* COMMUNITY */}
-
-        <div className="rounded-3xl border-2 border-black bg-[#B7C6C2] p-8 shadow-[8px_8px_0px_#000] transition hover:-translate-y-1">
-
-          <div className="flex items-center justify-between">
-
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-black bg-white text-4xl">
-              👥
-            </div>
-
-            <span className="rounded-full border-2 border-black bg-[#FFE17C] px-4 py-2 font-bold">
-              BETA
-            </span>
-
-          </div>
-
-          <h3 className="mt-8 text-5xl font-black text-black">
-            Community
-          </h3>
-
-          <p className="mt-5 text-lg leading-8 text-black">
-            Soon you'll be able to showcase your skills, find project teammates,
-            connect with seniors and collaborate on hackathons.
-          </p>
-
-          <div className="mt-8 rounded-2xl border-2 border-black bg-white p-6">
-
-            <p className="font-black text-black">
-              🚧 Coming Soon
-            </p>
-
-            <ul className="mt-4 space-y-2 text-black">
-              <li>• Student Profiles</li>
-              <li>• Project Teams</li>
-              <li>• Hackathon Partners</li>
-              <li>• Senior Guidance</li>
-              <li>• Skill Showcase</li>
-            </ul>
-
-          </div>
-
-          <div className="mt-8 flex gap-4">
-
-            <Link
-              href="/community"
-              className="rounded-xl border-2 border-black bg-black px-7 py-4 font-bold text-white transition hover:-translate-y-1"
-            >
-              Learn More →
-            </Link>
-
-          </div>
-
+        <div className="w-full bg-black/5 dark:bg-white/10 rounded-full h-3">
+          <div className="bg-accent-black h-3 rounded-full" style={{ width: '65%' }}></div>
         </div>
-
       </div>
 
-    </section>
+      <div className="flex flex-col mt-auto relative">
+        <div className="absolute left-3.5 top-2 bottom-6 w-0.5 bg-black/10 dark:bg-white/10"></div>
+        
+        {timeline.map((item, i) => (
+          <div key={i} className="flex gap-5 relative mb-6 last:mb-0 group">
+            <div className="w-7 h-7 rounded-full bg-white dark:bg-[#1A1A1A] flex items-center justify-center shrink-0 z-10 shadow-sm border-2 border-surface-mint group-hover:scale-110 transition-transform">
+              {item.status === 'completed' ? (
+                <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" />
+              ) : item.status === 'current' ? (
+                <Clock size={16} className="text-accent-blue" />
+              ) : (
+                <Circle size={14} className="text-text-secondary/40" />
+              )}
+            </div>
+            <div className="-mt-1">
+              <h3 className={`font-bold text-base ${item.status === 'completed' ? 'text-text-secondary line-through' : 'text-text-primary'}`}>
+                {item.title}
+              </h3>
+              <p className="text-text-secondary text-xs font-medium mt-0.5">{item.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
