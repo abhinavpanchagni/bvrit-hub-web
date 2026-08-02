@@ -270,7 +270,7 @@ export const resources = {
 "engineering-drawing": {
   units: {
     1: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_cad_unit_1/view?usp=sharing",
       video: "https://youtu.be/Kn2A9T8v8sQ?si=FJYQh2xj8r5k6eQ1",
       pyq: "",
       questionBank: "",
@@ -278,7 +278,7 @@ export const resources = {
     },
 
     2: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_cad_unit_2/view?usp=sharing",
       video: "https://youtu.be/9dQW9jHj5rE?si=3L6x4m2pN7yR8tQK",
       pyq: "",
       questionBank: "",
@@ -286,7 +286,7 @@ export const resources = {
     },
 
     3: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_cad_unit_3/view?usp=sharing",
       video: "https://youtu.be/y1AKsJ8x5Uc?si=Vt2Lk7B5uY6mP9Nc",
       pyq: "",
       questionBank: "",
@@ -294,7 +294,7 @@ export const resources = {
     },
 
     4: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_cad_unit_4/view?usp=sharing",
       video: "https://youtu.be/N8z3Afq5nVw?si=8kPwV9xA1mRtQ4Gh",
       pyq: "",
       questionBank: "",
@@ -302,7 +302,7 @@ export const resources = {
     },
 
     5: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_cad_unit_5/view?usp=sharing",
       video: "https://youtu.be/7iLz5L2N3NQ?si=Lk8Q2fD7mRt3WpAz",
       pyq: "",
       questionBank: "",
@@ -371,7 +371,7 @@ export const resources = {
 "matrices-calculus": {
   units: {
     1: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_math_unit_1/view?usp=sharing",
       video: "https://youtu.be/YOwkz3r5M8A",
       pyq: "",
       questionBank: "",
@@ -379,7 +379,7 @@ export const resources = {
     },
 
     2: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_math_unit_2/view?usp=sharing",
       video: "https://youtu.be/uQX8mP4Q8rQ",
       pyq: "",
       questionBank: "",
@@ -387,7 +387,7 @@ export const resources = {
     },
 
     3: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_math_unit_3/view?usp=sharing",
       video: "https://youtu.be/PK8tM4S8v9Q",
       pyq: "",
       questionBank: "",
@@ -395,7 +395,7 @@ export const resources = {
     },
 
     4: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_math_unit_4/view?usp=sharing",
       video: "https://youtu.be/2gJ3z2d5LxY",
       pyq: "",
       questionBank: "",
@@ -403,7 +403,7 @@ export const resources = {
     },
 
     5: {
-      notes: "",
+      notes: "https://drive.google.com/file/d/placeholder_math_unit_5/view?usp=sharing",
       video: "https://youtu.be/Vk8N0dL4QxE",
       pyq: "",
       questionBank: "",

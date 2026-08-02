@@ -24,13 +24,13 @@ export default async function SemesterOnePage() {
 
   const branch = profile?.branch;
 
-  const filteredSubjects = semester1Subjects.filter((subject) =>
-    subject.branches.includes(branch)
-  );
+  const filteredSubjects = branch
+    ? semester1Subjects.filter((subject) => subject.branches.includes(branch))
+    : semester1Subjects;
 
-  const filteredLabs = semester1Labs.filter((lab) =>
-    lab.branches.includes(branch)
-  );
+  const filteredLabs = branch
+    ? semester1Labs.filter((lab) => lab.branches.includes(branch))
+    : semester1Labs;
 
   return (
     <main className="min-h-screen bg-bg text-text-primary p-6 md:p-12 animate-fade-in-up">
@@ -55,7 +55,7 @@ export default async function SemesterOnePage() {
           </p>
 
           <span className="inline-block rounded-xl bg-surface-yellow/30 border border-surface-yellow/50 px-4 py-2 font-bold text-xs tracking-wider uppercase text-accent-black">
-            Branch : {branch}
+            Branch : {branch || "ALL (Not Set)"}
           </span>
         </header>
 

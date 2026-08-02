@@ -35,7 +35,7 @@ const benefits = [
 
 export default function GetStarted() {
   return (
-    <section className="py-24 relative scroll-reveal">
+    <section className="py-24 relative">
       <div className="mx-auto max-w-7xl px-6 md:px-12 relative z-10">
         <div className="text-center flex flex-col items-center mb-16">
           <span className="font-bold text-xs uppercase tracking-wider text-accent-blue mb-4">

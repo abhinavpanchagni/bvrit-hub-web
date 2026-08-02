@@ -12,6 +12,19 @@ export default function Hero() {
         ref={revealRef} 
         className="mx-auto max-w-5xl text-center relative z-10 scroll-reveal"
       >
+        {/* Main Logo centered in Hero */}
+        <div className="flex flex-col items-center justify-center mb-8">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24 bg-white dark:bg-white rounded-full flex items-center justify-center shadow-lg shadow-black/5 border border-border/10 overflow-hidden">
+              <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-2" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[13px] font-bold tracking-widest text-text-primary">BVRIT HUB</span>
+              <div className="h-[3px] w-full bg-accent-blue mt-[2px] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
         <div className="inline-block relative">
           <span className="font-medium text-sm md:text-base border border-border/10 bg-surface-yellow text-accent-black px-4 py-1.5 rounded-full inline-block mb-6 shadow-sm">
             For BVRITians, by BVRITians

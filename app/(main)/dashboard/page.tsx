@@ -2,7 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
-import { BookOpen, Bookmark, TrendingUp, User } from "lucide-react";
+import { User } from "lucide-react";
+import DashboardStats from "@/components/dashboard/DashboardStats";
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -61,43 +62,7 @@ export default async function DashboardPage() {
 
         {/* Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div className="bg-surface-peach rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
-            <div>
-               <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
-                 <BookOpen size={24} strokeWidth={2.5} />
-               </div>
-               <h2 className="text-2xl font-extrabold text-text-primary mb-1">Continue</h2>
-               <p className="text-text-secondary font-medium text-sm mb-6 leading-tight">
-                 Programming for Problem Solving
-               </p>
-            </div>
-            <Link
-              href="/semester-1/programming-for-problem-solving"
-              className="bg-accent-black text-bg font-bold text-sm rounded-xl hover:scale-[1.02] hover:shadow-md transition-all px-4 py-2.5 w-max"
-            >
-              Resume Learning
-            </Link>
-          </div>
-
-          <div className="bg-surface-mint rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
-            <div>
-               <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
-                 <Bookmark size={24} strokeWidth={2.5} />
-               </div>
-               <h2 className="text-2xl font-extrabold text-text-primary mb-1">Bookmarks</h2>
-            </div>
-            <p className="text-5xl font-extrabold text-accent-black mt-4">0</p>
-          </div>
-
-          <div className="bg-surface-yellow rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
-             <div>
-               <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
-                 <TrendingUp size={24} strokeWidth={2.5} />
-               </div>
-               <h2 className="text-2xl font-extrabold text-text-primary mb-1">Progress</h2>
-             </div>
-             <p className="text-5xl font-extrabold text-accent-black mt-4">0%</p>
-          </div>
+          <DashboardStats />
 
           <div className="bg-[#f0f0f0] dark:bg-[#2A2A2A] rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
             <div>

@@ -5,12 +5,18 @@ import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { semester1Subjects } from "@/data/semester1";
 import { resources } from "@/data/resources";
+import { Bookmark } from "lucide-react";
+import { useTracker } from "@/hooks/useTracker";
+import { useEffect } from "react";
 
 export default function SubjectPage() {
   const [open, setOpen] = useState<number | null>(1);
 
   const params = useParams();
   const slug = params.subject as string;
+
+  const { toggleBookmark, isBookmarked, markProgress } = useTracker();
+  const bookmarked = isBookmarked(slug);
 
   const data = useMemo(
     () => semester1Subjects.find((subject) => subject.slug === slug),
@@ -19,6 +25,17 @@ export default function SubjectPage() {
 
   const resource =
     resources[slug as keyof typeof resources];
+
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem('bvrithub_recent', JSON.stringify({
+        id: slug,
+        title: data.title,
+        href: `/semester-1/${slug}`
+      }));
+      window.dispatchEvent(new Event('bvrithub_tracker_update'));
+    }
+  }, [data, slug]);
 
   if (!data) {
     return (
@@ -43,9 +60,17 @@ export default function SubjectPage() {
             {data.code}
           </p>
 
-          <h1 className="mt-6 text-6xl font-extrabold">
-            {data.title}
-          </h1>
+          <div className="flex items-center gap-6 mt-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold">
+              {data.title}
+            </h1>
+            <button 
+              onClick={() => toggleBookmark({ id: slug, title: data.title, href: `/semester-1/${slug}`, type: 'subject' })}
+              className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all shadow-sm active:scale-95 ${bookmarked ? 'bg-surface-mint border-surface-mint text-accent-black' : 'bg-white border-border/20 text-text-secondary hover:text-accent-black'}`}
+            >
+              <Bookmark size={28} strokeWidth={2.5} className={bookmarked ? "fill-accent-black" : ""} />
+            </button>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
             {data.branches.map((branch) => (
@@ -73,13 +98,16 @@ export default function SubjectPage() {
                 onClick={() =>
                   setOpen(open === index + 1 ? null : index + 1)
                 }
-                className="flex w-full items-center justify-between bg-blue-300 px-8 py-6 text-left"
+                className="flex w-full items-center justify-between bg-surface-lavender/40 hover:bg-surface-lavender/60 transition-colors px-8 py-6 text-left border-b border-border/10"
               >
-                <h2 className="text-3xl font-extrabold">
-                  📘 {unit}
+                <h2 className="text-2xl font-extrabold text-accent-black flex items-center gap-3">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-sm border border-border/10">
+                    {index + 1}
+                  </span>
+                  {unit}
                 </h2>
 
-                <span className="text-3xl font-extrabold">
+                <span className="text-3xl font-extrabold text-accent-black/50">
                   {open === index + 1 ? "−" : "+"}
                 </span>
               </button>
@@ -89,11 +117,12 @@ export default function SubjectPage() {
 
                   <a
                     href={unitData?.notes || "#"}
-                    target="_blank"
-                    className={`rounded-2xl border border-border/10 shadow-sm border border-border/10 p-6 text-center text-xl font-extrabold ${
+                    target={unitData?.notes ? "_blank" : undefined}
+                    onClick={() => unitData?.notes && markProgress(`${slug}-notes-${index}`)}
+                    className={`rounded-2xl border border-border/10 shadow-sm p-6 text-center text-lg font-extrabold transition-all flex flex-col items-center justify-center gap-2 ${
                       unitData?.notes
-                        ? "bg-surface-yellow/40 hover:-translate-y-1"
-                        : "cursor-not-allowed bg-gray-300"
+                        ? "bg-surface-mint/40 hover:-translate-y-1 hover:shadow-md text-accent-black"
+                        : "cursor-not-allowed bg-black/5 text-accent-black/40"
                     }`}
                   >
                     📄 Notes
@@ -101,11 +130,12 @@ export default function SubjectPage() {
 
                   <a
                     href={unitData?.video || "#"}
-                    target="_blank"
-                    className={`rounded-2xl border border-border/10 shadow-sm border border-border/10 p-6 text-center text-xl font-extrabold ${
+                    target={unitData?.video ? "_blank" : undefined}
+                    onClick={() => unitData?.video && markProgress(`${slug}-video-${index}`)}
+                    className={`rounded-2xl border border-border/10 shadow-sm p-6 text-center text-lg font-extrabold transition-all flex flex-col items-center justify-center gap-2 ${
                       unitData?.video
-                        ? "bg-surface-yellow/40 hover:-translate-y-1"
-                        : "cursor-not-allowed bg-gray-300"
+                        ? "bg-surface-lavender/40 hover:-translate-y-1 hover:shadow-md text-accent-black"
+                        : "cursor-not-allowed bg-black/5 text-accent-black/40"
                     }`}
                   >
                     🎥 Videos
@@ -113,11 +143,12 @@ export default function SubjectPage() {
 
                   <a
                     href={unitData?.pyq || "#"}
-                    target="_blank"
-                    className={`rounded-2xl border border-border/10 shadow-sm border border-border/10 p-6 text-center text-xl font-extrabold ${
+                    target={unitData?.pyq ? "_blank" : undefined}
+                    onClick={() => unitData?.pyq && markProgress(`${slug}-pyq-${index}`)}
+                    className={`rounded-2xl border border-border/10 shadow-sm p-6 text-center text-lg font-extrabold transition-all flex flex-col items-center justify-center gap-2 ${
                       unitData?.pyq
-                        ? "bg-surface-yellow/40 hover:-translate-y-1"
-                        : "cursor-not-allowed bg-gray-300"
+                        ? "bg-surface-yellow/40 hover:-translate-y-1 hover:shadow-md text-accent-black"
+                        : "cursor-not-allowed bg-black/5 text-accent-black/40"
                     }`}
                   >
                     📚 PYQs
@@ -125,26 +156,28 @@ export default function SubjectPage() {
 
                   <a
                     href={unitData?.questionBank || "#"}
-                    target="_blank"
-                    className={`rounded-2xl border border-border/10 shadow-sm border border-border/10 p-6 text-center text-xl font-extrabold ${
+                    target={unitData?.questionBank ? "_blank" : undefined}
+                    onClick={() => unitData?.questionBank && markProgress(`${slug}-qbank-${index}`)}
+                    className={`rounded-2xl border border-border/10 shadow-sm p-6 text-center text-lg font-extrabold transition-all flex flex-col items-center justify-center gap-2 ${
                       unitData?.questionBank
-                        ? "bg-surface-yellow/40 hover:-translate-y-1"
-                        : "cursor-not-allowed bg-gray-300"
+                        ? "bg-surface-mint/40 hover:-translate-y-1 hover:shadow-md text-accent-black"
+                        : "cursor-not-allowed bg-black/5 text-accent-black/40"
                     }`}
                   >
-                    ❓ Question Bank
+                    ❓ Q-Bank
                   </a>
 
                   <a
                     href={unitData?.importantQuestions || "#"}
-                    target="_blank"
-                    className={`rounded-2xl border border-border/10 shadow-sm border border-border/10 p-6 text-center text-xl font-extrabold ${
+                    target={unitData?.importantQuestions ? "_blank" : undefined}
+                    onClick={() => unitData?.importantQuestions && markProgress(`${slug}-imp-${index}`)}
+                    className={`rounded-2xl border border-border/10 shadow-sm p-6 text-center text-lg font-extrabold transition-all flex flex-col items-center justify-center gap-2 ${
                       unitData?.importantQuestions
-                        ? "bg-surface-yellow/40 hover:-translate-y-1"
-                        : "cursor-not-allowed bg-gray-300"
+                        ? "bg-surface-lavender/40 hover:-translate-y-1 hover:shadow-md text-accent-black"
+                        : "cursor-not-allowed bg-black/5 text-accent-black/40"
                     }`}
                   >
-                    ⭐ Important Questions
+                    ⭐ Important
                   </a>
 
                 </div>

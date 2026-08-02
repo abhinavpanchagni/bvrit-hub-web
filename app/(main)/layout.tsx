@@ -18,7 +18,7 @@ export default async function DashboardLayout({
   if (!user) redirect("/login");
 
   return (
-    <div className="flex h-screen overflow-hidden bg-bg text-text-primary selection:bg-accent-blue/20 selection:text-text-primary">
+    <div className="flex flex-col md:flex-row h-screen overflow-hidden bg-bg text-text-primary selection:bg-accent-blue/20 selection:text-text-primary">
       {/* Sidebar */}
       <Sidebar user={user} />
 

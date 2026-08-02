@@ -39,7 +39,9 @@ export default function RegisterPage() {
         <div className="hidden lg:flex flex-col justify-center">
           <div className="bg-surface-lavender p-12 rounded-[2.5rem] border border-border/10 shadow-sm relative h-full flex flex-col justify-center overflow-hidden">
             <Link href="/" className="flex items-end gap-1 group mb-12 w-max relative z-10">
-              <span className="text-4xl font-extrabold tracking-tighter text-accent-black leading-none">bh</span>
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 overflow-hidden">
+                <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
+              </div>
               <div className="ml-2 flex flex-col mb-1">
                 <span className="text-xs font-bold tracking-widest text-text-primary">BVRIT HUB</span>
                 <div className="h-[3px] w-full bg-accent-blue mt-[2px] rounded-full"></div>
@@ -71,7 +73,9 @@ export default function RegisterPage() {
           <div className="w-full max-w-md bg-white dark:bg-[#1A1A1A] p-8 md:p-10 rounded-[2.5rem] border border-border/10 shadow-xl shadow-black/5 relative">
             
             <div className="lg:hidden flex items-end justify-center gap-1 mb-10">
-              <span className="text-4xl font-extrabold tracking-tighter text-accent-black leading-none">bh</span>
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 overflow-hidden">
+                <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
+              </div>
               <div className="ml-2 flex flex-col mb-1">
                 <span className="text-xs font-bold tracking-widest text-text-primary">BVRIT HUB</span>
                 <div className="h-[3px] w-full bg-accent-blue mt-[2px] rounded-full"></div>

@@ -12,7 +12,9 @@ import {
   Moon, 
   Sun,
   LayoutDashboard,
-  User
+  User,
+  Menu,
+  X
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -28,15 +30,48 @@ export default function Sidebar({ user }: { user: any }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   return (
-    <aside className="w-64 h-screen bg-white dark:bg-[#1A1A1A] border-r border-border/10 flex flex-col p-4 shadow-sm z-50">
-      
+    <>
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center justify-between p-4 bg-white dark:bg-[#1A1A1A] border-b border-border/10 shrink-0">
+        <Link href="/" className="w-10 h-10 bg-white dark:bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 transition-transform hover:scale-105 active:scale-95 overflow-hidden">
+          <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
+        </Link>
+        <button 
+          onClick={() => setIsMobileOpen(true)}
+          className="p-2 rounded-xl bg-black/5 dark:bg-white/5 text-text-primary hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+        >
+          <Menu size={20} />
+        </button>
+      </div>
+
+      {/* Mobile Overlay */}
+      {isMobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden" 
+          onClick={() => setIsMobileOpen(false)} 
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`fixed md:relative top-0 left-0 h-full w-64 bg-white dark:bg-[#1A1A1A] border-r border-border/10 flex flex-col p-4 shadow-xl md:shadow-sm z-50 transform transition-transform duration-300 ease-in-out ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+        
+        <button 
+          onClick={() => setIsMobileOpen(false)}
+          className="md:hidden absolute top-4 right-4 p-2 rounded-xl bg-black/5 dark:bg-white/5 text-text-secondary hover:text-text-primary transition-colors"
+        >
+          <X size={20} />
+        </button>
+
       {/* Brand Logo */}
-      <Link href="/" className="flex items-end gap-1 mb-8 p-2">
-        <span className="text-4xl font-extrabold tracking-tighter text-accent-black leading-none">bh</span>
+      <Link href="/" className="flex items-end gap-1 mb-8 p-2 w-max">
+        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 overflow-hidden">
+          <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
+        </div>
         <div className="ml-2 flex flex-col mb-1">
           <span className="text-xs font-bold tracking-widest text-text-primary">BVRIT HUB</span>
           <div className="h-[3px] w-full bg-accent-blue mt-[2px] rounded-full"></div>
@@ -74,6 +109,7 @@ export default function Sidebar({ user }: { user: any }) {
             <Link
               key={link.name}
               href={link.href}
+              onClick={() => setIsMobileOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${
                 isActive 
                   ? 'bg-accent-black text-bg shadow-sm' 
@@ -115,5 +151,6 @@ export default function Sidebar({ user }: { user: any }) {
         )}
       </div>
     </aside>
+    </>
   );
 }

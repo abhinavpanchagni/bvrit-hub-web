@@ -69,14 +69,12 @@ export default function Loader() {
           rotateX: 0,
           transition: { duration: 0.8, ease: "easeInOut" }
         }}
-        className="relative w-32 h-32 md:w-48 md:h-48 z-10"
+        className="relative w-32 h-32 md:w-48 md:h-48 z-10 bg-white rounded-full flex items-center justify-center shadow-xl border border-border/10 overflow-hidden"
       >
-        <Image 
-          src="/icon.svg" 
+        <img 
+          src="/logo.png" 
           alt="BVRIT Hub Logo" 
-          fill
-          className="object-contain drop-shadow-2xl"
-          priority
+          className="w-full h-full object-contain p-4"
         />
       </motion.div>
     </div>
