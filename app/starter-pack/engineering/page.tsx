@@ -9,7 +9,7 @@ export default function EngineeringPage() {
         {/* Header */}
         <header className="mb-16">
           <Link 
-            href="/freshers" 
+            href="/starter-pack" 
             className="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-text-secondary hover:text-accent-blue transition-colors mb-6"
           >
             <ArrowLeft size={16} strokeWidth={2.5} /> Back to Freshers

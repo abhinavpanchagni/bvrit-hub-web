@@ -24,8 +24,8 @@ export default function Community() {
 
       <div className="flex flex-col gap-3 mt-auto">
         {events.map((event, i) => (
-          <Link key={i} href="#" className="flex items-center gap-4 bg-white/60 dark:bg-black/10 hover:bg-white dark:hover:bg-black/20 p-3 rounded-2xl transition-colors border border-transparent hover:border-border/10 group">
-            <div className="w-12 h-12 rounded-xl bg-white dark:bg-black/20 flex items-center justify-center shrink-0 text-accent-black shadow-sm group-hover:scale-105 transition-transform">
+          <Link key={i} href="#" className="flex items-center gap-4 bg-white/60 hover:bg-white:bg-black/20 p-3 rounded-2xl transition-colors border border-transparent hover:border-border/10 group">
+            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 text-accent-black shadow-sm group-hover:scale-105 transition-transform">
               <event.icon size={20} strokeWidth={2.5} />
             </div>
             <div className="flex-1">

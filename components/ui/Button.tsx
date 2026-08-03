@@ -17,7 +17,7 @@ export default function Button({
   const styles =
     variant === "primary"
       ? "bg-accent-black text-bg hover:shadow-lg"
-      : "bg-white/60 dark:bg-black/10 border border-border/10 text-text-primary hover:bg-white/80 dark:hover:bg-black/20";
+      : "bg-white/60 border border-border/10 text-text-primary hover:bg-white/80:bg-black/20";
 
   const buttonClass = `
     inline-flex items-center justify-center gap-2

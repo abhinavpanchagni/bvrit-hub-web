@@ -34,7 +34,28 @@ export const updateSession = async (request: NextRequest) => {
   );
 
   // IMPORTANT: You *must* call getUser to refresh the session!
-  await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const protectedRoutes = [
+    '/dashboard',
+    '/dashboard-admin',
+    '/resources',
+    '/semester-1',
+    '/semester-2',
+    '/freshers',
+    '/clubs',
+    '/settings',
+    '/profile'
+  ];
+
+  const isProtected = protectedRoutes.some(route => request.nextUrl.pathname.startsWith(route));
+
+  if (!user && isProtected) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/login';
+    url.searchParams.set('next', request.nextUrl.pathname);
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 };

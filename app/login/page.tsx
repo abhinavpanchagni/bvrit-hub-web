@@ -19,7 +19,8 @@ export default function LoginPage() {
       data: { user },
     } = await supabase.auth.getUser();
 
-    let next = "/dashboard";
+    const searchParams = new URLSearchParams(window.location.search);
+    let next = searchParams.get("next") || "/dashboard";
 
     if (user) {
       // User is logged in, redirect to dashboard directly
@@ -74,7 +75,7 @@ export default function LoginPage() {
                 "Resume your study packs anywhere"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-text-secondary font-medium">
-                   <div className="w-8 h-8 rounded-full bg-white dark:bg-black/20 flex items-center justify-center shrink-0 shadow-sm border border-white/20">
+                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-white/20">
                      <Check size={16} strokeWidth={3} className="text-accent-black" />
                    </div>
                    {item}
@@ -89,7 +90,7 @@ export default function LoginPage() {
 
         {/* Right: Auth Form */}
         <div className="w-full flex items-center justify-center">
-          <div className="w-full max-w-md bg-white dark:bg-[#1A1A1A] p-8 md:p-10 rounded-[2.5rem] border border-border/10 shadow-xl shadow-black/5 relative">
+          <div className="w-full max-w-md bg-white p-8 md:p-10 rounded-[2.5rem] border border-border/10 shadow-xl shadow-black/5 relative">
             
             <div className="lg:hidden flex items-end justify-center gap-1 mb-10">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 overflow-hidden">
@@ -112,14 +113,14 @@ export default function LoginPage() {
               type="button"
               onClick={handleGoogleLogin}
               disabled={loading}
-              className="w-full bg-white dark:bg-[#2A2A2A] text-text-primary font-bold text-sm border border-border/10 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-all px-6 py-4 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+              className="w-full bg-white text-text-primary font-bold text-sm border border-border/10 rounded-2xl hover:bg-black/5:bg-white/5 transition-all px-6 py-4 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
             >
               <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
               {loading ? "Opening Google..." : "Continue with Google"}
             </button>
 
             {error && (
-              <div className="mt-6 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 p-4 font-medium text-sm flex items-center gap-3">
+              <div className="mt-6 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 p-4 font-medium text-sm flex items-center gap-3">
                 <AlertCircle size={20} className="shrink-0" />
                 {error}
               </div>

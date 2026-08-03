@@ -14,7 +14,8 @@ import {
   LayoutDashboard,
   User,
   Menu,
-  X
+  X,
+  Trophy
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -24,6 +25,7 @@ const navLinks = [
   { name: "Resources", href: "/resources", icon: Book },
   { name: "Labs", href: "/semester-1/labs", icon: FlaskConical },
   { name: "Community", href: "/dashboard-admin/feed", icon: Users },
+  { name: "Clubs", href: "/clubs", icon: Trophy },
 ];
 
 export default function Sidebar({ user }: { user: any }) {
@@ -37,13 +39,13 @@ export default function Sidebar({ user }: { user: any }) {
   return (
     <>
       {/* Mobile Header */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-white dark:bg-[#1A1A1A] border-b border-border/10 shrink-0">
-        <Link href="/" className="w-10 h-10 bg-white dark:bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 transition-transform hover:scale-105 active:scale-95 overflow-hidden">
+      <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-border/10 shrink-0">
+        <Link href="/" className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 transition-transform hover:scale-105 active:scale-95 overflow-hidden">
           <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
         </Link>
         <button 
           onClick={() => setIsMobileOpen(true)}
-          className="p-2 rounded-xl bg-black/5 dark:bg-white/5 text-text-primary hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+          className="p-2 rounded-xl bg-black/5 text-text-primary hover:bg-black/10:bg-white/10 transition-colors"
         >
           <Menu size={20} />
         </button>
@@ -58,11 +60,11 @@ export default function Sidebar({ user }: { user: any }) {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed md:relative top-0 left-0 h-full w-64 bg-white dark:bg-[#1A1A1A] border-r border-border/10 flex flex-col p-4 shadow-xl md:shadow-sm z-50 transform transition-transform duration-300 ease-in-out ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+      <aside className={`fixed md:relative top-0 left-0 h-full w-64 bg-white border-r border-border/10 flex flex-col p-4 shadow-xl md:shadow-sm z-50 transform transition-transform duration-300 ease-in-out ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
         
         <button 
           onClick={() => setIsMobileOpen(false)}
-          className="md:hidden absolute top-4 right-4 p-2 rounded-xl bg-black/5 dark:bg-white/5 text-text-secondary hover:text-text-primary transition-colors"
+          className="md:hidden absolute top-4 right-4 p-2 rounded-xl bg-black/5 text-text-secondary hover:text-text-primary transition-colors"
         >
           <X size={20} />
         </button>
@@ -79,7 +81,7 @@ export default function Sidebar({ user }: { user: any }) {
       </Link>
 
       {/* Profile / Top */}
-      <Link href="/profile" className="flex items-center gap-3 p-3 mb-6 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+      <Link href="/profile" className="flex items-center gap-3 p-3 mb-6 rounded-2xl hover:bg-black/5:bg-white/5 transition-all">
         {user?.user_metadata?.avatar_url ? (
           <img 
             src={user.user_metadata.avatar_url} 
@@ -113,7 +115,7 @@ export default function Sidebar({ user }: { user: any }) {
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${
                 isActive 
                   ? 'bg-accent-black text-bg shadow-sm' 
-                  : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5 hover:text-text-primary'
+                  : 'text-text-secondary hover:bg-black/5:bg-white/5 hover:text-text-primary'
               }`}
             >
               <link.icon size={18} strokeWidth={isActive ? 2.5 : 2} />
@@ -127,28 +129,18 @@ export default function Sidebar({ user }: { user: any }) {
       <div className="mt-auto space-y-1 pt-4 border-t border-border/10">
         <Link
           href="/profile"
-          className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${pathname === '/profile' ? 'bg-black/5 dark:bg-white/5 text-text-primary' : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5 hover:text-text-primary'}`}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${pathname === '/profile' ? 'bg-black/5 text-text-primary' : 'text-text-secondary hover:bg-black/5:bg-white/5 hover:text-text-primary'}`}
         >
           <User size={18} strokeWidth={2} />
           Profile
         </Link>
         <Link
           href="/settings"
-          className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${pathname === '/settings' ? 'bg-black/5 dark:bg-white/5 text-text-primary' : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5 hover:text-text-primary'}`}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${pathname === '/settings' ? 'bg-black/5 text-text-primary' : 'text-text-secondary hover:bg-black/5:bg-white/5 hover:text-text-primary'}`}
         >
           <Settings size={18} strokeWidth={2} />
           Settings
         </Link>
-
-        {mounted && (
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-text-secondary hover:bg-black/5 dark:hover:bg-white/5 hover:text-text-primary transition-all text-left"
-          >
-            {theme === 'dark' ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
-            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-          </button>
-        )}
       </div>
     </aside>
     </>

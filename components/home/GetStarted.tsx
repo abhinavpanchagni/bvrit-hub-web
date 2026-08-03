@@ -4,23 +4,23 @@ import { ArrowRight, Check, PenTool } from "lucide-react";
 const steps = [
   {
     number: "1",
-    title: "Login",
-    description: "Sign in using your Google account.",
+    title: "Create your account",
+    description: "",
   },
   {
     number: "2",
-    title: "Choose Branch",
-    description: "Select your engineering branch.",
+    title: "Choose your branch",
+    description: "",
   },
   {
     number: "3",
-    title: "Choose Semester",
-    description: "Open your current semester.",
+    title: "Personalize your experience",
+    description: "",
   },
   {
     number: "4",
-    title: "Start Learning",
-    description: "Access notes, labs, PYQs and more.",
+    title: "Start exploring",
+    description: "",
   },
 ];
 
@@ -43,17 +43,17 @@ export default function GetStarted() {
           </span>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-primary mb-6 max-w-4xl leading-tight">
-            Start Your Learning Journey
+            Getting Started
           </h2>
 
           <p className="mx-auto text-lg text-text-secondary font-medium max-w-3xl">
-            Login once and unlock all semester-wise academic resources.
+            Joining BVRIT Hub takes less than a minute.
           </p>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left */}
-          <div className="bg-white dark:bg-[#1A1A1A] rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10 relative">
+          <div className="bg-white rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10 relative">
             <h3 className="text-3xl font-extrabold text-text-primary mb-4">
               Login Required
             </h3>
@@ -69,19 +69,16 @@ export default function GetStarted() {
               {steps.map((step) => (
                 <div
                   key={step.number}
-                  className="bg-surface-mint/30 dark:bg-surface-mint/10 border border-border/10 rounded-2xl p-6 flex items-center gap-6 shadow-sm transition-transform hover:-translate-y-1"
+                  className="bg-surface-mint/30 border border-border/10 rounded-2xl p-6 flex items-center gap-6 shadow-sm transition-transform hover:-translate-y-1"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-mint text-accent-black font-extrabold text-xl shadow-sm">
                     {step.number}
                   </div>
 
                   <div>
-                    <h4 className="text-xl font-extrabold text-text-primary mb-1">
+                    <h4 className="text-xl font-extrabold text-text-primary">
                       {step.title}
                     </h4>
-                    <p className="text-sm font-medium text-text-secondary">
-                      {step.description}
-                    </p>
                   </div>
                 </div>
               ))}
@@ -103,9 +100,9 @@ export default function GetStarted() {
                 {benefits.map((item, i) => (
                   <div
                     key={item}
-                    className="bg-white/60 dark:bg-black/10 border border-white/20 rounded-2xl py-4 px-6 flex items-center gap-4 transition-transform hover:-translate-y-1"
+                    className="bg-white/60 border border-white/20 rounded-2xl py-4 px-6 flex items-center gap-4 transition-transform hover:-translate-y-1"
                   >
-                    <div className="w-8 h-8 rounded-full bg-white dark:bg-black/20 flex items-center justify-center shrink-0 shadow-sm border border-white/20">
+                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-white/20">
                       <PenTool size={16} strokeWidth={2.5} className="text-accent-black" />
                     </div>
                     <span className="text-text-primary font-bold text-sm">{item}</span>

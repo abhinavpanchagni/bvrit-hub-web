@@ -46,19 +46,7 @@
   --ring: #3b82f6;
 }
 
-.dark {
-  --bg: #14161A;
-  --surface-mint: #1F3A31;
-  --surface-lavender: #2B2540;
-  --surface-peach: #3A2C1D;
-  --surface-yellow: #3A331A;
-  --text-primary: #F2F2F0;
-  --text-secondary: #A8A8A8;
-  --accent-blue: #6C9BFF;
-  --accent-black: #F2F2F0;
-  --border: #27272a;
-  --ring: #3b82f6;
-}
+
 
 body {
   background-color: var(--bg);

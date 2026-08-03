@@ -8,7 +8,7 @@ const chapters = [
     title: "How Engineering Works",
     description:
       "Understand semesters, subjects, labs, projects and your engineering journey.",
-    href: "/freshers/engineering",
+    href: "/starter-pack/engineering",
     color: "bg-surface-mint",
   },
   {
@@ -16,7 +16,7 @@ const chapters = [
     title: "SGPA & CGPA",
     description:
       "Learn how marks, SGPA and CGPA are calculated.",
-    href: "/freshers/sgpa",
+    href: "/starter-pack/sgpa",
     color: "bg-surface-lavender",
   },
   {
@@ -24,7 +24,7 @@ const chapters = [
     title: "Attendance Rules",
     description:
       "Everything about attendance percentage and eligibility.",
-    href: "/freshers/attendance",
+    href: "/starter-pack/attendance",
     color: "bg-surface-peach",
   },
   {
@@ -32,7 +32,7 @@ const chapters = [
     title: "Mid Examinations",
     description:
       "Know the mid exam pattern and how to prepare smartly.",
-    href: "/freshers/mids",
+    href: "/starter-pack/mids",
     color: "bg-surface-yellow",
   },
   {
@@ -40,7 +40,7 @@ const chapters = [
     title: "Semester Examinations",
     description:
       "Understand the final exam pattern and evaluation.",
-    href: "/freshers/semester-exams",
+    href: "/starter-pack/semester-exams",
     color: "bg-surface-mint",
   },
   {
@@ -48,7 +48,7 @@ const chapters = [
     title: "Labs Overview",
     description:
       "Everything about labs, records, viva and practical sessions.",
-    href: "/freshers/labs",
+    href: "/starter-pack/labs",
     color: "bg-surface-lavender",
   },
   {
@@ -56,7 +56,7 @@ const chapters = [
     title: "VEDIC AI",
     description:
       "Attendance, assignments, quizzes and academic platform.",
-    href: "/freshers/vedic",
+    href: "/starter-pack/vedic",
     color: "bg-surface-peach",
   },
   {
@@ -64,7 +64,7 @@ const chapters = [
     title: "ECAP",
     description:
       "Results, fee payments and student portal guide.",
-    href: "/freshers/ecap",
+    href: "/starter-pack/ecap",
     color: "bg-surface-yellow",
   },
   {
@@ -72,7 +72,7 @@ const chapters = [
     title: "Transport",
     description:
       "Bus routes, fees and transport information.",
-    href: "/freshers/transport",
+    href: "/starter-pack/transport",
     color: "bg-surface-mint",
   },
   {
@@ -80,7 +80,7 @@ const chapters = [
     title: "Hostel",
     description:
       "Hostel life, facilities and important information.",
-    href: "/freshers/hostel",
+    href: "/starter-pack/hostel",
     color: "bg-surface-lavender",
   },
 ];
@@ -184,7 +184,7 @@ export default function FreshersPage() {
             Follow the chapters in order for the best experience.
           </p>
           <Link
-            href="/freshers/engineering"
+            href="/starter-pack/engineering"
             className="inline-flex items-center gap-2 rounded-2xl border border-border/10 shadow-sm bg-surface-yellow px-8 py-4 text-sm font-bold text-accent-black hover:scale-[1.02] transition-transform"
           >
             Start Learning <ArrowRight size={16} strokeWidth={2.5} />

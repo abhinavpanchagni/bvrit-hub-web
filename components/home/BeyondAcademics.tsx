@@ -21,24 +21,24 @@ export default function BeyondAcademics() {
         </div>
       </div>
 
-      <div className="bg-white/60 dark:bg-black/10 rounded-2xl p-5 mb-8 shadow-sm border border-white/20">
+      <div className="bg-white/60 rounded-2xl p-5 mb-8 shadow-sm border border-white/20">
         <div className="flex justify-between text-sm font-bold text-text-primary mb-2">
           <span>Semester Progress</span>
           <span>65%</span>
         </div>
-        <div className="w-full bg-black/5 dark:bg-white/10 rounded-full h-3">
+        <div className="w-full bg-black/5 rounded-full h-3">
           <div className="bg-accent-black h-3 rounded-full" style={{ width: '65%' }}></div>
         </div>
       </div>
 
       <div className="flex flex-col mt-auto relative">
-        <div className="absolute left-3.5 top-2 bottom-6 w-0.5 bg-black/10 dark:bg-white/10"></div>
+        <div className="absolute left-3.5 top-2 bottom-6 w-0.5 bg-black/10"></div>
         
         {timeline.map((item, i) => (
           <div key={i} className="flex gap-5 relative mb-6 last:mb-0 group">
-            <div className="w-7 h-7 rounded-full bg-white dark:bg-[#1A1A1A] flex items-center justify-center shrink-0 z-10 shadow-sm border-2 border-surface-mint group-hover:scale-110 transition-transform">
+            <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0 z-10 shadow-sm border-2 border-surface-mint group-hover:scale-110 transition-transform">
               {item.status === 'completed' ? (
-                <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" />
+                <CheckCircle2 size={16} className="text-emerald-600" />
               ) : item.status === 'current' ? (
                 <Clock size={16} className="text-accent-blue" />
               ) : (

@@ -15,7 +15,7 @@ export default function SubjectPage() {
   const params = useParams();
   const slug = params.subject as string;
 
-  const { toggleBookmark, isBookmarked, markProgress } = useTracker();
+  const { toggleBookmark, isBookmarked, markProgress, setRecentItem } = useTracker();
   const bookmarked = isBookmarked(slug);
 
   const data = useMemo(
@@ -28,14 +28,13 @@ export default function SubjectPage() {
 
   useEffect(() => {
     if (data) {
-      localStorage.setItem('bvrithub_recent', JSON.stringify({
+      setRecentItem({
         id: slug,
         title: data.title,
         href: `/semester-1/${slug}`
-      }));
-      window.dispatchEvent(new Event('bvrithub_tracker_update'));
+      });
     }
-  }, [data, slug]);
+  }, [data, slug, setRecentItem]);
 
   if (!data) {
     return (

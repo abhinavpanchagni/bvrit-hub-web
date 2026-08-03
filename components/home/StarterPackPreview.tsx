@@ -29,13 +29,13 @@ export default function StarterPackPreview() {
         <input 
           type="text" 
           placeholder="Search for notes, labs, PYQs..." 
-          className="w-full bg-white/60 dark:bg-black/10 border border-white/20 text-text-primary rounded-full pl-11 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all placeholder:text-text-secondary/70 font-medium text-sm shadow-sm"
+          className="w-full bg-white/60 border border-white/20 text-text-primary rounded-full pl-11 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all placeholder:text-text-secondary/70 font-medium text-sm shadow-sm"
         />
       </div>
 
       <div className="grid grid-cols-1 gap-3 mt-auto">
         {resources.map((item) => (
-          <Link key={item.title} href={item.href} className="flex items-center gap-4 bg-white/60 dark:bg-black/10 hover:bg-white dark:hover:bg-black/20 p-3 rounded-2xl transition-colors border border-white/20 shadow-sm group">
+          <Link key={item.title} href={item.href} className="flex items-center gap-4 bg-white/60 hover:bg-white:bg-black/20 p-3 rounded-2xl transition-colors border border-white/20 shadow-sm group">
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${item.color} text-accent-black shadow-sm group-hover:scale-105 transition-transform`}>
               <item.icon size={20} strokeWidth={2.5} />
             </div>

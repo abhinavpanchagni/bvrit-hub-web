@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-
-// Custom event to trigger re-renders across tabs/components
-const TRACKER_EVENT = 'bvrithub_tracker_update';
+import { createClient } from '@/utils/supabase/client';
 
 export interface Bookmark {
   id: string; // e.g. "M&C", "PPS"
@@ -19,78 +17,85 @@ export interface RecentItem {
 }
 
 export function useTracker() {
+  const supabase = createClient();
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [progress, setProgress] = useState<string[]>([]);
   const [recent, setRecent] = useState<RecentItem | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
-  const loadState = useCallback(() => {
-    if (typeof window === 'undefined') return;
-    
+  const loadState = useCallback(async () => {
     try {
-      const b = localStorage.getItem('bvrithub_bookmarks');
-      if (b) setBookmarks(JSON.parse(b));
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setMounted(true);
+        return;
+      }
+      setUserId(user.id);
 
-      const p = localStorage.getItem('bvrithub_progress');
-      if (p) setProgress(JSON.parse(p));
+      // Fetch bookmarks
+      const { data: bData } = await supabase.from('user_bookmarks').select('*').eq('user_id', user.id);
+      if (bData) {
+        setBookmarks(bData.map(b => ({ id: b.item_id, title: b.title, type: b.type, href: b.href })));
+      }
 
-      const r = localStorage.getItem('bvrithub_recent');
-      if (r) setRecent(JSON.parse(r));
+      // Fetch progress
+      const { data: pData } = await supabase.from('user_progress').select('*').eq('user_id', user.id);
+      if (pData) {
+        setProgress(pData.map(p => p.item_id));
+      }
+
+      // Fetch recent activity
+      const { data: rData } = await supabase.from('user_recent_activity').select('*').eq('user_id', user.id).maybeSingle();
+      if (rData) {
+        setRecent({ id: "recent", title: rData.title, href: rData.href });
+      }
     } catch (e) {
-      console.error('Failed to load tracker state', e);
+      console.error('Failed to load tracker state from database', e);
+    } finally {
+      setMounted(true);
     }
-  }, []);
+  }, [supabase]);
 
   useEffect(() => {
-    setMounted(true);
     loadState();
-    
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key && e.key.startsWith('bvrithub_')) {
-        loadState();
-      }
-    };
-
-    const handleCustomEvent = () => loadState();
-
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener(TRACKER_EVENT, handleCustomEvent);
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener(TRACKER_EVENT, handleCustomEvent);
-    };
   }, [loadState]);
 
-  const dispatchUpdate = () => {
-    window.dispatchEvent(new Event(TRACKER_EVENT));
-  };
-
-  const toggleBookmark = (item: Bookmark) => {
+  const toggleBookmark = async (item: Bookmark) => {
+    if (!userId) return;
     const isBookmarked = bookmarks.some(b => b.id === item.id);
-    let newBookmarks;
     if (isBookmarked) {
-      newBookmarks = bookmarks.filter(b => b.id !== item.id);
+      setBookmarks(prev => prev.filter(b => b.id !== item.id));
+      await supabase.from('user_bookmarks').delete().match({ user_id: userId, item_id: item.id });
     } else {
-      newBookmarks = [...bookmarks, item];
-    }
-    localStorage.setItem('bvrithub_bookmarks', JSON.stringify(newBookmarks));
-    setBookmarks(newBookmarks);
-    dispatchUpdate();
-  };
-
-  const markProgress = (itemId: string) => {
-    if (!progress.includes(itemId)) {
-      const newProgress = [...progress, itemId];
-      localStorage.setItem('bvrithub_progress', JSON.stringify(newProgress));
-      setProgress(newProgress);
-      dispatchUpdate();
+      setBookmarks(prev => [...prev, item]);
+      await supabase.from('user_bookmarks').insert({
+        user_id: userId,
+        item_id: item.id,
+        title: item.title,
+        type: item.type,
+        href: item.href
+      });
     }
   };
 
-  const setRecentItem = (item: RecentItem) => {
-    localStorage.setItem('bvrithub_recent', JSON.stringify(item));
+  const markProgress = async (itemId: string) => {
+    if (!userId || progress.includes(itemId)) return;
+    setProgress(prev => [...prev, itemId]);
+    await supabase.from('user_progress').insert({
+      user_id: userId,
+      item_id: itemId
+    });
+  };
+
+  const setRecentItem = async (item: RecentItem) => {
+    if (!userId) return;
     setRecent(item);
-    dispatchUpdate();
+    await supabase.from('user_recent_activity').upsert({
+      user_id: userId,
+      title: item.title,
+      href: item.href
+    }, { onConflict: 'user_id' });
   };
 
   // Calculate a generic progress percentage (max 100%)

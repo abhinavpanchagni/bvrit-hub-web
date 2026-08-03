@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [showIntro, setShowIntro] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -38,7 +36,7 @@ export default function Navbar() {
       transition={showIntro ? { duration: 1.2, type: "spring", bounce: 0.4 } : { duration: 0.5, type: "spring" }}
     >
       <div className="flex items-end">
-        <div className="w-10 h-10 md:w-12 md:h-12 bg-white dark:bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 transition-transform hover:scale-105 active:scale-95 overflow-hidden">
+        <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 transition-transform hover:scale-105 active:scale-95 overflow-hidden">
           <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1" />
         </div>
         <div className="ml-2 flex flex-col mb-1">
@@ -94,15 +92,7 @@ export default function Navbar() {
 
           {/* CTA & Theme Toggle */}
           <div className="flex items-center justify-end gap-2 md:gap-4 w-auto md:w-[200px]">
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-full hover:bg-surface-lavender text-text-primary transition-colors"
-                aria-label="Toggle Dark Mode"
-              >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            )}
+
             
             <Link
               href="/login"

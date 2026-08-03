@@ -6,8 +6,8 @@ export const resources = {
           "https://drive.google.com/file/d/1fF_5AL6PcJ616KFnokn46o-u1wuefpAz/view?usp=sharing",
         video:
           "https://youtu.be/Zq-yXdtWKwE?si=njBKcaLi5G5F7e0_",
-        pyq: "",
-        questionBank: "",
+        pyq: "https://drive.google.com/file/d/12RytgUguHMnRdyUfShC4ZItZ-39gJeeB/view?usp=sharing",
+        questionBank: "https://drive.google.com/file/d/1cgsjhHNjWtTt1oaIRvHg9Ve8voQCggHe/view?usp=sharing",
         importantQuestions: "",
       },
 
@@ -16,8 +16,8 @@ export const resources = {
           "https://drive.google.com/file/d/1sh_xFgDIf2--fGK16XGngMsKqZduJDhh/view?usp=sharing",
         video:
           "https://youtu.be/mtIRyZXMjLU?si=7QfD9JoAFVhDAspK",
-        pyq: "",
-        questionBank: "",
+        pyq: "https://drive.google.com/file/d/12RytgUguHMnRdyUfShC4ZItZ-39gJeeB/view?usp=sharing",
+        questionBank: "https://drive.google.com/file/d/1cgsjhHNjWtTt1oaIRvHg9Ve8voQCggHe/view?usp=sharing",
         importantQuestions: "",
       },
 
@@ -26,8 +26,8 @@ export const resources = {
           "https://drive.google.com/file/d/1nHxudYgb2UZTFAm_MZIovaVVywJCEaMM/view?usp=sharing",
         video:
           "https://youtu.be/gq5FAO79dH8?si=Fcd3TZr6Qii20yuG",
-        pyq: "",
-        questionBank: "",
+        pyq: "https://drive.google.com/file/d/12RytgUguHMnRdyUfShC4ZItZ-39gJeeB/view?usp=sharing",
+        questionBank: "https://drive.google.com/file/d/1cgsjhHNjWtTt1oaIRvHg9Ve8voQCggHe/view?usp=sharing",
         importantQuestions: "",
       },
 
@@ -36,8 +36,8 @@ export const resources = {
           "https://drive.google.com/file/d/1lDJVBOYpVr46l0AX5MoqbjWu9ZtSQ6cF/view?usp=sharing",
         video:
           "https://youtu.be/nFeEFtI3t3k?si=VRtZRtO06_uU5PdD",
-        pyq: "",
-        questionBank: "",
+        pyq: "https://drive.google.com/file/d/12RytgUguHMnRdyUfShC4ZItZ-39gJeeB/view?usp=sharing",
+        questionBank: "https://drive.google.com/file/d/1cgsjhHNjWtTt1oaIRvHg9Ve8voQCggHe/view?usp=sharing",
         importantQuestions: "",
       },
 
@@ -46,8 +46,8 @@ export const resources = {
           "https://drive.google.com/file/d/1BHb2lPMyRagy6EiR2Yyo3WRR8ISBECyG/view?usp=sharing",
         video:
           "https://youtu.be/k4xVQhMERuQ?si=AHnrwfpYUZcw90eK",
-        pyq: "",
-        questionBank: "",
+        pyq: "https://drive.google.com/file/d/12RytgUguHMnRdyUfShC4ZItZ-39gJeeB/view?usp=sharing",
+        questionBank: "https://drive.google.com/file/d/1cgsjhHNjWtTt1oaIRvHg9Ve8voQCggHe/view?usp=sharing",
         importantQuestions: "",
       },
     },

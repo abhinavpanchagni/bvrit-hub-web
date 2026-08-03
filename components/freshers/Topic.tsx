@@ -12,7 +12,7 @@ export default function Topic({
   children,
 }: TopicProps) {
   return (
-    <section className="mb-10 rounded-[2.5rem] border border-border/10 bg-white dark:bg-[#1A1A1A] p-10 md:p-14 shadow-sm">
+    <section className="mb-10 rounded-[2.5rem] border border-border/10 bg-white p-10 md:p-14 shadow-sm">
       <span className="rounded-xl border border-border/10 bg-bg px-4 py-2 text-xs font-bold uppercase tracking-wider text-text-secondary inline-block mb-6">
         {badge}
       </span>

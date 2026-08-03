@@ -62,7 +62,7 @@ export default async function ResourcesPage() {
               href={semester.href}
               className={`${semester.color} rounded-[2.5rem] p-10 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col items-start`}
             >
-              <div className="w-14 h-14 rounded-2xl border border-border/10 shadow-sm bg-white/60 dark:bg-black/10 flex items-center justify-center mb-6 shadow-sm border border-white/20">
+              <div className="w-14 h-14 rounded-2xl border border-border/10 shadow-sm bg-white/60 flex items-center justify-center mb-6 shadow-sm border border-white/20">
                 <BookOpen size={24} strokeWidth={2.5} className="text-accent-black" />
               </div>
 
@@ -74,7 +74,7 @@ export default async function ResourcesPage() {
                 {semester.description}
               </p>
 
-              <div className="bg-white/60 dark:bg-black/10 border border-white/20 px-6 py-3 rounded-2xl border border-border/10 shadow-sm text-accent-black font-bold text-sm flex items-center gap-2">
+              <div className="bg-white/60 border border-white/20 px-6 py-3 rounded-2xl border border-border/10 shadow-sm text-accent-black font-bold text-sm flex items-center gap-2">
                 Open <ArrowRight size={16} strokeWidth={2.5} />
               </div>
             </Link>

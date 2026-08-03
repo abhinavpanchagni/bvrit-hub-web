@@ -47,13 +47,13 @@ export default async function DashboardPage() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <span className="bg-white/60 dark:bg-black/10 border border-white/20 text-text-primary font-bold text-sm px-4 py-2 rounded-xl shadow-sm">
+              <span className="bg-white/60 border border-white/20 text-text-primary font-bold text-sm px-4 py-2 rounded-xl shadow-sm">
                  Branch: {profile?.branch || "N/A"}
               </span>
-              <span className="bg-white/60 dark:bg-black/10 border border-white/20 text-text-primary font-bold text-sm px-4 py-2 rounded-xl shadow-sm">
+              <span className="bg-white/60 border border-white/20 text-text-primary font-bold text-sm px-4 py-2 rounded-xl shadow-sm">
                  Year: {profile?.year || "N/A"}
               </span>
-              <span className="bg-white/60 dark:bg-black/10 border border-white/20 text-text-primary font-bold text-sm px-4 py-2 rounded-xl shadow-sm">
+              <span className="bg-white/60 border border-white/20 text-text-primary font-bold text-sm px-4 py-2 rounded-xl shadow-sm">
                  Section: {profile?.section || "N/A"}
               </span>
             </div>
@@ -64,9 +64,9 @@ export default async function DashboardPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <DashboardStats />
 
-          <div className="bg-[#f0f0f0] dark:bg-[#2A2A2A] rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
+          <div className="bg-[#f0f0f0] rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
             <div>
-               <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
+               <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
                  <User size={24} strokeWidth={2.5} />
                </div>
                <h2 className="text-2xl font-extrabold text-text-primary mb-1">Profile</h2>

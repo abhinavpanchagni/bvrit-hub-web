@@ -5,16 +5,16 @@ import { Bell, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const notifications = [
-  { title: "How Engineering Works", time: "2h ago", color: "bg-surface-peach", text: "text-orange-700 dark:text-orange-300" },
-  { title: "Understand SGPA & CGPA", time: "5h ago", color: "bg-surface-mint", text: "text-emerald-700 dark:text-emerald-300" },
-  { title: "Attendance Rules Update", time: "1d ago", color: "bg-surface-lavender", text: "text-purple-700 dark:text-purple-300" },
+  { title: "How Engineering Works", time: "2h ago", color: "bg-surface-peach", text: "text-orange-700" },
+  { title: "Understand SGPA & CGPA", time: "5h ago", color: "bg-surface-mint", text: "text-emerald-700" },
+  { title: "Attendance Rules Update", time: "1d ago", color: "bg-surface-lavender", text: "text-purple-700" },
 ];
 
 export default function FreshersFeed() {
   const revealRef = useScrollReveal();
 
   return (
-    <div ref={revealRef} className="bg-white dark:bg-[#1A1A1A] rounded-3xl p-6 md:p-8 flex flex-col h-full scroll-reveal border border-border/10 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 shadow-sm">
+    <div ref={revealRef} className="bg-white rounded-3xl p-6 md:p-8 flex flex-col h-full scroll-reveal border border-border/10 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 shadow-sm">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-text-primary mb-1">Freshers Feed</h2>
@@ -27,7 +27,7 @@ export default function FreshersFeed() {
 
       <div className="flex flex-col gap-4 mt-auto">
         {notifications.map((item, i) => (
-          <Link key={i} href="#" className="flex items-start gap-4 p-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
+          <Link key={i} href="#" className="flex items-start gap-4 p-3 rounded-2xl hover:bg-black/5:bg-white/5 transition-colors group">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${item.color} ${item.text} font-bold text-sm shadow-sm group-hover:scale-105 transition-transform`}>
               {item.title.charAt(0)}
             </div>

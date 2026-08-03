@@ -16,7 +16,7 @@ const sections = [
 
 export default function Sidebar() {
   return (
-    <aside className="sticky top-24 h-fit rounded-[2.5rem] border border-border/10 bg-white dark:bg-[#1A1A1A] p-8 shadow-sm">
+    <aside className="sticky top-24 h-fit rounded-[2.5rem] border border-border/10 bg-white p-8 shadow-sm">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-10 h-10 rounded-xl bg-surface-yellow/30 border border-surface-yellow/50 flex items-center justify-center">
           <BookOpen size={20} className="text-accent-black" />

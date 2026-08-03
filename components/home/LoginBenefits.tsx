@@ -1,34 +1,38 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const benefits = [
-  "Save your learning progress",
-  "Bookmark important resources",
+  "Personalized dashboard",
   "Continue where you left off",
-  "Access your personalized dashboard",
-  "Receive updates for new resources",
-  "Unlock future study packs",
+  "Save your preferences",
+  "Stay updated with campus announcements",
+  "Discover new opportunities",
+  "Access upcoming community features",
 ];
 
 export default function LoginBenefits() {
+  const revealRef = useScrollReveal();
+
   return (
-    <section className="py-24 relative z-10 scroll-reveal">
+    <section ref={revealRef} className="py-24 relative z-10 scroll-reveal">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Left */}
           <div className="bg-surface-peach rounded-[2.5rem] p-10 lg:p-14 shadow-sm border border-border/10 flex flex-col justify-between">
             <div>
-              <span className="font-bold text-xs uppercase tracking-wider bg-white/60 dark:bg-black/10 border border-white/20 text-accent-black px-4 py-2 rounded-xl inline-block mb-8">
+              <span className="font-bold text-xs uppercase tracking-wider bg-white/60 border border-white/20 text-accent-black px-4 py-2 rounded-xl inline-block mb-8">
                 Login Required
               </span>
 
               <h2 className="text-4xl md:text-5xl font-extrabold text-text-primary mb-4 leading-tight">
-                Create a FREE Account
+                Why Join BVRIT Hub?
               </h2>
 
               <p className="text-lg text-text-secondary font-medium mb-12">
-                Login once to unlock all semester-wise academic resources inside
-                BVRIT Hub.
+                A free account unlocks a personalized campus experience.
               </p>
             </div>
 
@@ -50,9 +54,9 @@ export default function LoginBenefits() {
               {benefits.map((item, i) => (
                 <div
                   key={item}
-                  className="bg-white/60 dark:bg-black/10 border border-white/20 py-4 px-6 rounded-2xl flex items-center gap-4 transition-transform hover:-translate-y-1"
+                  className="bg-white/60 border border-white/20 py-4 px-6 rounded-2xl flex items-center gap-4 transition-transform hover:-translate-y-1"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white dark:bg-black/20 flex items-center justify-center shrink-0 shadow-sm border border-white/20">
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-white/20">
                     <Check size={16} strokeWidth={3} className="text-accent-black" />
                   </div>
                   <span className="text-text-primary font-bold text-sm">{item}</span>

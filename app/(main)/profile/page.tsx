@@ -84,7 +84,7 @@ export default function ProfilePage() {
 
   return (
     <main className="flex min-h-full items-start justify-center py-8 pb-16">
-      <div className="w-full max-w-3xl bg-white dark:bg-[#1A1A1A] rounded-[2.5rem] shadow-sm border border-border/10 relative overflow-hidden">
+      <div className="w-full max-w-3xl bg-white rounded-[2.5rem] shadow-sm border border-border/10 relative overflow-hidden">
         
         <div className="p-8 md:p-12">
           
@@ -103,7 +103,7 @@ export default function ProfilePage() {
               <div className="text-center md:text-left">
                 <h2 className="text-3xl font-extrabold text-text-primary mb-1">{userData?.name}</h2>
                 <p className="text-lg text-text-secondary font-medium">{userData?.email}</p>
-                <span className="inline-block mt-4 bg-black/5 dark:bg-white/10 text-text-primary font-bold text-xs px-4 py-2 rounded-xl">
+                <span className="inline-block mt-4 bg-black/5 text-text-primary font-bold text-xs px-4 py-2 rounded-xl">
                   Google Account
                 </span>
               </div>
@@ -118,7 +118,7 @@ export default function ProfilePage() {
                 <select
                   value={branch}
                   onChange={(e) => setBranch(e.target.value)}
-                  className="w-full rounded-2xl border border-border/10 shadow-sm bg-white/50 dark:bg-black/20 border border-border/10 p-4 font-medium text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all appearance-none cursor-pointer shadow-sm"
+                  className="w-full rounded-2xl border border-border/10 shadow-sm bg-white/50 border border-border/10 p-4 font-medium text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all appearance-none cursor-pointer shadow-sm"
                 >
                   <option value="">Select Branch</option>
                   <option>CSE</option>
@@ -139,7 +139,7 @@ export default function ProfilePage() {
                 <select
                   value={year}
                   onChange={(e) => setYear(Number(e.target.value))}
-                  className="w-full rounded-2xl border border-border/10 shadow-sm bg-white/50 dark:bg-black/20 border border-border/10 p-4 font-medium text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all appearance-none cursor-pointer shadow-sm"
+                  className="w-full rounded-2xl border border-border/10 shadow-sm bg-white/50 border border-border/10 p-4 font-medium text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all appearance-none cursor-pointer shadow-sm"
                 >
                   <option value={1}>1st Year</option>
                   <option value={2}>2nd Year</option>
@@ -154,7 +154,7 @@ export default function ProfilePage() {
                   value={section}
                   onChange={(e) => setSection(e.target.value)}
                   placeholder="Section (Optional)"
-                  className="w-full rounded-2xl border border-border/10 shadow-sm bg-white/50 dark:bg-black/20 border border-border/10 p-4 font-medium text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
+                  className="w-full rounded-2xl border border-border/10 shadow-sm bg-white/50 border border-border/10 p-4 font-medium text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
                 />
               </div>
             </div>

@@ -55,8 +55,8 @@ export default function RegisterPage() {
               Create a free account to unlock semester-wise resources, study packs, labs, and track your progress through engineering.
             </p>
 
-            <div className="bg-white/60 dark:bg-black/10 border border-white/20 rounded-3xl p-6 shadow-sm relative z-10 backdrop-blur-md">
-              <div className="w-12 h-12 bg-white dark:bg-black/20 rounded-xl flex items-center justify-center mb-4 text-accent-black shadow-sm">
+            <div className="bg-white/60 border border-white/20 rounded-3xl p-6 shadow-sm relative z-10 backdrop-blur-md">
+              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 text-accent-black shadow-sm">
                 <Library size={24} strokeWidth={2.5} />
               </div>
               <h3 className="text-xl font-bold text-text-primary mb-2">Built for Students</h3>
@@ -70,7 +70,7 @@ export default function RegisterPage() {
 
         {/* Right: Register Form */}
         <div className="w-full flex items-center justify-center">
-          <div className="w-full max-w-md bg-white dark:bg-[#1A1A1A] p-8 md:p-10 rounded-[2.5rem] border border-border/10 shadow-xl shadow-black/5 relative">
+          <div className="w-full max-w-md bg-white p-8 md:p-10 rounded-[2.5rem] border border-border/10 shadow-xl shadow-black/5 relative">
             
             <div className="lg:hidden flex items-end justify-center gap-1 mb-10">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 overflow-hidden">
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. John Doe"
-                  className="w-full bg-white/50 dark:bg-black/20 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
+                  className="w-full bg-white/50 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
                 />
               </div>
 
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. john@gmail.com"
-                  className="w-full bg-white/50 dark:bg-black/20 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
+                  className="w-full bg-white/50 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
                 />
               </div>
 
@@ -121,7 +121,7 @@ export default function RegisterPage() {
                     required
                     value={branch}
                     onChange={(e) => setBranch(e.target.value)}
-                    className="w-full bg-white/50 dark:bg-black/20 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all cursor-pointer shadow-sm appearance-none"
+                    className="w-full bg-white/50 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all cursor-pointer shadow-sm appearance-none"
                   >
                     <option value="">Select</option>
                     <option>CSE</option>
@@ -143,7 +143,7 @@ export default function RegisterPage() {
                     required
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
-                    className="w-full bg-white/50 dark:bg-black/20 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all cursor-pointer shadow-sm appearance-none"
+                    className="w-full bg-white/50 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all cursor-pointer shadow-sm appearance-none"
                   >
                     <option value="1">1st Year</option>
                     <option value="2">2nd Year</option>

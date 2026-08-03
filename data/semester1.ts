@@ -1,5 +1,27 @@
 export const semester1Subjects = [
   {
+    slug: "programming-for-problem-solving",
+    code: "CS103ES",
+    title: "Programming for Problem Solving",
+    branches: [
+      "CSE",
+      "CSM",
+      "CSD",
+      "AI&DS",
+      "CSBS",
+      "ECE",
+      "EEE",
+    ],
+    units: [
+      "Unit 1",
+      "Unit 2",
+      "Unit 3",
+      "Unit 4",
+      "Unit 5",
+    ],
+  },
+
+  {
     slug: "matrices-calculus",
     code: "MA101BS",
     title: "Matrices and Calculus",
@@ -48,27 +70,6 @@ export const semester1Subjects = [
     ],
   },
 
-  {
-    slug: "programming-for-problem-solving",
-    code: "CS103ES",
-    title: "Programming for Problem Solving",
-    branches: [
-      "CSE",
-      "CSM",
-      "CSD",
-      "AI&DS",
-      "CSBS",
-      "ECE",
-      "EEE",
-    ],
-    units: [
-      "Unit 1",
-      "Unit 2",
-      "Unit 3",
-      "Unit 4",
-      "Unit 5",
-    ],
-  },
 
   {
     slug: "c-programming-data-structures",

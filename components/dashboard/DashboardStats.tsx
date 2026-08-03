@@ -12,7 +12,7 @@ export default function DashboardStats() {
       <>
         <div className="bg-surface-peach rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group opacity-50">
           <div>
-            <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm">
+            <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm">
               <BookOpen size={24} strokeWidth={2.5} />
             </div>
             <h2 className="text-2xl font-extrabold text-text-primary mb-1">Continue</h2>
@@ -23,7 +23,7 @@ export default function DashboardStats() {
         </div>
         <div className="bg-surface-mint rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group opacity-50">
           <div>
-            <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm">
+            <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm">
               <Bookmark size={24} strokeWidth={2.5} />
             </div>
             <h2 className="text-2xl font-extrabold text-text-primary mb-1">Bookmarks</h2>
@@ -32,7 +32,7 @@ export default function DashboardStats() {
         </div>
         <div className="bg-surface-yellow rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group opacity-50">
           <div>
-            <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm">
+            <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm">
               <TrendingUp size={24} strokeWidth={2.5} />
             </div>
             <h2 className="text-2xl font-extrabold text-text-primary mb-1">Progress</h2>
@@ -47,7 +47,7 @@ export default function DashboardStats() {
     <>
       <div className="bg-surface-peach rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
         <div>
-          <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
             <BookOpen size={24} strokeWidth={2.5} />
           </div>
           <h2 className="text-2xl font-extrabold text-text-primary mb-1">Continue</h2>
@@ -65,7 +65,7 @@ export default function DashboardStats() {
 
       <div className="bg-surface-mint rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
         <div>
-          <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
             <Bookmark size={24} strokeWidth={2.5} />
           </div>
           <h2 className="text-2xl font-extrabold text-text-primary mb-1">Bookmarks</h2>
@@ -82,7 +82,7 @@ export default function DashboardStats() {
 
       <div className="bg-surface-yellow rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
         <div>
-          <div className="w-12 h-12 rounded-xl bg-white/60 dark:bg-black/10 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
             <TrendingUp size={24} strokeWidth={2.5} />
           </div>
           <h2 className="text-2xl font-extrabold text-text-primary mb-1">Progress</h2>

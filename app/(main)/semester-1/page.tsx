@@ -77,7 +77,7 @@ export default async function SemesterOnePage() {
                 key={subject.slug}
                 className="rounded-[2.5rem] border border-border/10 bg-surface-lavender/40 p-10 shadow-sm flex flex-col items-start transition-transform hover:-translate-y-1"
               >
-                <span className="font-bold text-xs uppercase tracking-wider bg-white/60 dark:bg-black/10 text-accent-black px-3 py-1 rounded-lg border border-white/20 mb-4 inline-block">
+                <span className="font-bold text-xs uppercase tracking-wider bg-white/60 text-accent-black px-3 py-1 rounded-lg border border-white/20 mb-4 inline-block">
                   {subject.code}
                 </span>
 
@@ -89,7 +89,7 @@ export default async function SemesterOnePage() {
                   {subject.branches.map((branch) => (
                     <span
                       key={branch}
-                      className="rounded-lg bg-white/40 dark:bg-black/5 border border-white/20 px-3 py-1 text-xs font-bold text-accent-black"
+                      className="rounded-lg bg-white/40 border border-white/20 px-3 py-1 text-xs font-bold text-accent-black"
                     >
                       {branch}
                     </span>
@@ -136,7 +136,7 @@ export default async function SemesterOnePage() {
                 key={lab.slug}
                 className="rounded-[2.5rem] border border-border/10 bg-surface-mint/40 p-10 shadow-sm flex flex-col items-start transition-transform hover:-translate-y-1"
               >
-                <span className="font-bold text-xs uppercase tracking-wider bg-white/60 dark:bg-black/10 text-accent-black px-3 py-1 rounded-lg border border-white/20 mb-4 inline-block">
+                <span className="font-bold text-xs uppercase tracking-wider bg-white/60 text-accent-black px-3 py-1 rounded-lg border border-white/20 mb-4 inline-block">
                   {lab.code}
                 </span>
 
@@ -148,7 +148,7 @@ export default async function SemesterOnePage() {
                   {lab.branches.map((branch) => (
                     <span
                       key={branch}
-                      className="rounded-lg bg-white/40 dark:bg-black/5 border border-white/20 px-3 py-1 text-xs font-bold text-accent-black"
+                      className="rounded-lg bg-white/40 border border-white/20 px-3 py-1 text-xs font-bold text-accent-black"
                     >
                       {branch}
                     </span>

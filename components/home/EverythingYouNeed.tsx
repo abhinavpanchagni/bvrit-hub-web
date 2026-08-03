@@ -1,45 +1,49 @@
+"use client";
+
 import { BookOpen, Package, Zap } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const items = [
   {
     icon: BookOpen,
-    title: "Academic Resources",
+    title: "Learn",
     description:
-      "Semester-wise notes, PYQs, question banks, important questions and study material.",
+      "Navigate your academic journey with confidence.",
     color: "bg-surface-yellow",
   },
   {
     icon: Package,
-    title: "Freshers Starter Pack",
+    title: "Discover",
     description:
-      "Everything you need to know before your first semester at BVRIT.",
+      "Explore clubs, events, opportunities, competitions, and campus activities.",
     color: "bg-surface-peach",
   },
   {
     icon: Zap,
-    title: "Save Hours Every Week",
+    title: "Connect",
     description:
-      "No more searching through WhatsApp groups, Google Drive links and multiple websites.",
+      "Become part of a growing student community that shares knowledge and helps each other succeed.",
     color: "bg-surface-lavender",
   },
 ];
 
 export default function EverythingYouNeed() {
+  const revealRef = useScrollReveal();
+
   return (
-    <section className="bg-bg py-24 scroll-reveal">
+    <section ref={revealRef} className="bg-bg py-24 scroll-reveal">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="text-center flex flex-col items-center">
           <span className="font-bold text-xs uppercase tracking-wider text-accent-blue mb-4">
-            Everything You Need
+            One Platform.
           </span>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-primary mb-6 max-w-4xl leading-tight">
-            One Platform.<br />Every Resource.
+            Endless Possibilities.
           </h2>
 
           <p className="mx-auto text-lg text-text-secondary font-medium max-w-3xl">
-            BVRIT Hub brings together everything an engineering student needs
-            in one organized platform.
+            Everything that matters at BVRIT, thoughtfully organized into one experience.
           </p>
         </div>
 
@@ -49,7 +53,7 @@ export default function EverythingYouNeed() {
               key={item.title}
               className={`${item.color} rounded-[2.5rem] border border-border/10 p-10 shadow-sm flex flex-col items-start transition-transform hover:-translate-y-1`}
             >
-              <div className="w-16 h-16 rounded-2xl bg-white/60 dark:bg-black/10 flex items-center justify-center mb-8 shadow-sm border border-white/20">
+              <div className="w-16 h-16 rounded-2xl bg-white/60 flex items-center justify-center mb-8 shadow-sm border border-white/20">
                 <item.icon size={28} strokeWidth={2.5} className="text-accent-black" />
               </div>
 
