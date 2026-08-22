@@ -180,12 +180,18 @@ export default function EcapPage() {
             🎥 ECAP Walkthrough
           </h3>
 
-          <div className="mt-8 flex h-80 items-center justify-center rounded-2xl border border-border/10 shadow-sm border-4 border-dashed border-black bg-white">
-
-            <p className="text-center text-2xl font-extrabold">
-              Embed ECAP Walkthrough Video Here
+          <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-border/10 shadow-sm border-2 border-black bg-white p-12 text-center">
+            <p className="text-xl font-bold mb-6 text-text-secondary">
+              Watch the complete walkthrough video to understand how to navigate and use ECAP effectively.
             </p>
-
+            <a 
+              href="https://drive.google.com/file/d/1pVdJpvi1VJQ2GW90wvLiOareuUm3i7cz/view?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-accent-black text-white font-bold text-lg px-8 py-5 rounded-2xl hover:scale-105 hover:shadow-xl transition-all shadow-md active:scale-95"
+            >
+              ▶ Watch ECAP Walkthrough
+            </a>
           </div>
 
         </div>

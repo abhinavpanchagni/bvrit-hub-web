@@ -88,7 +88,7 @@ export default function SemesterExamsPage() {
 
             <div className="rounded-2xl border border-border/10 shadow-sm border border-border/10 bg-white p-7 text-center">
               <p className="text-5xl font-extrabold">10</p>
-              <p className="mt-2 text-lg font-bold">Assignments</p>
+              <p className="mt-2 text-lg font-bold">Assignments + Project + Case Studies</p>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export default function SemesterExamsPage() {
             </div>
 
             <div className="rounded-2xl border border-border/10 shadow-sm border border-border/10 bg-white p-6">
-              <p className="font-extrabold">Assignments</p>
+              <p className="font-extrabold">Assignments + Project + Case Studies</p>
               <p className="mt-2 text-2xl font-extrabold">9 / 10</p>
             </div>
           </div>

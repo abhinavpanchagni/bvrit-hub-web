@@ -7,7 +7,6 @@ const sections = [
   { title: "Attendance", href: "/freshers/attendance" },
   { title: "Mid Exams", href: "/freshers/mids" },
   { title: "Semester Exams", href: "/freshers/semester-exams" },
-  { title: "Labs", href: "/freshers/labs" },
   { title: "VEDIC AI", href: "/freshers/vedic" },
   { title: "ECAP", href: "/freshers/ecap" },
   { title: "Transport", href: "/freshers/transport" },

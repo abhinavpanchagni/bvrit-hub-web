@@ -5,7 +5,7 @@ import { BookOpen, Bookmark, TrendingUp } from "lucide-react";
 import { useTracker } from "@/hooks/useTracker";
 
 export default function DashboardStats() {
-  const { mounted, bookmarks, progressPercentage, recent } = useTracker();
+  const { mounted, bookmarks, recent } = useTracker();
 
   if (!mounted) {
     return (
@@ -30,15 +30,6 @@ export default function DashboardStats() {
           </div>
           <p className="text-5xl font-extrabold text-accent-black mt-4">...</p>
         </div>
-        <div className="bg-surface-yellow rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group opacity-50">
-          <div>
-            <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm">
-              <TrendingUp size={24} strokeWidth={2.5} />
-            </div>
-            <h2 className="text-2xl font-extrabold text-text-primary mb-1">Progress</h2>
-          </div>
-          <p className="text-5xl font-extrabold text-accent-black mt-4">...</p>
-        </div>
       </>
     );
   }
@@ -56,10 +47,10 @@ export default function DashboardStats() {
           </p>
         </div>
         <Link
-          href={recent ? recent.href : "/resources"}
+          href={recent ? recent.href : "/freshers"}
           className="bg-accent-black text-bg font-bold text-sm rounded-xl hover:scale-[1.02] hover:shadow-md transition-all px-4 py-2.5 w-max"
         >
-          {recent ? "Resume Learning" : "Browse Resources"}
+          {recent ? "Resume Learning" : "Browse Freshers"}
         </Link>
       </div>
 
@@ -73,22 +64,13 @@ export default function DashboardStats() {
         <div className="flex items-end justify-between mt-4">
           <p className="text-5xl font-extrabold text-accent-black">{bookmarks.length}</p>
           {bookmarks.length > 0 && (
-            <Link href="/resources" className="text-sm font-bold text-accent-black/60 hover:text-accent-black transition-colors">
-              Go to Resources
+            <Link href="/freshers" className="text-sm font-bold text-accent-black/60 hover:text-accent-black transition-colors">
+              Go to Freshers
             </Link>
           )}
         </div>
       </div>
 
-      <div className="bg-surface-yellow rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
-        <div>
-          <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
-            <TrendingUp size={24} strokeWidth={2.5} />
-          </div>
-          <h2 className="text-2xl font-extrabold text-text-primary mb-1">Progress</h2>
-        </div>
-        <p className="text-5xl font-extrabold text-accent-black mt-4">{progressPercentage}%</p>
-      </div>
     </>
   );
 }

@@ -17,9 +17,9 @@ const steps = [
   },
   {
     number: "03",
-    title: "Start Learning Smarter",
+    title: "Start Exploring",
     description:
-      "Access notes, labs, PYQs, important questions and study resources—all organized in one place.",
+      "Access community feed, clubs, and networking hub—all organized in one place.",
     color: "bg-green-300",
   },
 ];
@@ -34,13 +34,13 @@ export default function HowItWorks() {
           </span>
 
           <h2 className="mt-8 text-5xl font-black leading-tight md:text-6xl">
-            Start Learning in
+            Start Exploring in
             <br />
             Just 3 Steps
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg text-black">
-            BVRIT Hub is designed to make finding study resources simple,
+            BVRIT Hub is designed to make finding platform features simple,
             organized and stress-free.
           </p>
         </div>

@@ -40,17 +40,65 @@ export const updateSession = async (request: NextRequest) => {
     '/dashboard',
     '/dashboard-admin',
     '/resources',
-    '/semester-1',
-    '/semester-2',
     '/freshers',
     '/clubs',
     '/settings',
-    '/profile'
+    '/profile',
+    '/suggestions-hub' // Protect student suggestions hub too
   ];
 
   const isProtected = protectedRoutes.some(route => request.nextUrl.pathname.startsWith(route));
+  const isAdminRoute = request.nextUrl.pathname.startsWith('/admin');
+  const isAdminLogin = request.nextUrl.pathname === '/admin/login';
 
-  if (!user && isProtected) {
+  if (isAdminRoute) {
+    if (!user) {
+      if (!isAdminLogin) {
+        const url = request.nextUrl.clone();
+        url.pathname = '/admin/login';
+        return NextResponse.redirect(url);
+      }
+    } else {
+      // User is logged in. Check role from profiles table.
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role, must_change_password')
+        .eq('id', user.id)
+        .single();
+        
+      const role = profile?.role || 'student';
+      const mustChangePassword = profile?.must_change_password || false;
+
+      if (role !== 'admin') {
+        // Students cannot access admin portal (except the login page).
+        if (!isAdminLogin) {
+          const url = request.nextUrl.clone();
+          url.pathname = '/dashboard';
+          return NextResponse.redirect(url);
+        }
+      } else {
+        // User is an admin
+        if (isAdminLogin) {
+          const url = request.nextUrl.clone();
+          url.pathname = '/admin';
+          return NextResponse.redirect(url);
+        }
+
+        if (mustChangePassword && request.nextUrl.pathname !== '/admin/settings/change-password') {
+          const url = request.nextUrl.clone();
+          url.pathname = '/admin/settings/change-password';
+          return NextResponse.redirect(url);
+        }
+
+        if (!mustChangePassword && request.nextUrl.pathname === '/admin/settings/change-password') {
+          const url = request.nextUrl.clone();
+          url.pathname = '/admin';
+          return NextResponse.redirect(url);
+        }
+      }
+    }
+  } else if (!user && isProtected) {
+    // Standard student protected routes
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     url.searchParams.set('next', request.nextUrl.pathname);

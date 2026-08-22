@@ -43,6 +43,7 @@ export async function GET(request: Request) {
         profileData = {
           ...profileData,
           name: parsedData.name || profileData.name,
+          username: parsedData.username,
           branch: parsedData.branch,
           year: parsedData.year,
         };
@@ -51,7 +52,23 @@ export async function GET(request: Request) {
       }
     }
 
-    await supabase.from("profiles").upsert(profileData);
+    const { data: existingProfile } = await supabase
+      .from("profiles")
+      .select("id, avatar_url")
+      .eq("id", user.id)
+      .single();
+
+    if (existingProfile) {
+      // Update email, but only update avatar_url if it is not a custom uploaded avatar
+      const updateData: any = { email: profileData.email };
+      if (!existingProfile.avatar_url || !existingProfile.avatar_url.includes("/storage/v1/object/public/avatars/")) {
+        updateData.avatar_url = profileData.avatar_url;
+      }
+
+      await supabase.from("profiles").update(updateData).eq("id", user.id);
+    } else {
+      await supabase.from("profiles").insert([profileData]);
+    }
   }
 
   // Clear the cookie so it doesn't apply on future logins

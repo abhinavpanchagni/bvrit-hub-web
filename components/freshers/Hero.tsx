@@ -1,6 +1,24 @@
-export default function Hero() {
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+
+interface HeroProps {
+  showBackButton?: boolean;
+}
+
+export default function Hero({ showBackButton = false }: HeroProps) {
   return (
     <section className="rounded-[2.5rem] border border-border/10 bg-surface-mint/30 p-10 md:p-14 text-text-primary shadow-sm mb-12">
+      {showBackButton && (
+        <div className="mb-8">
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-text-secondary hover:text-accent-blue transition-colors"
+          >
+            <ArrowLeft size={16} strokeWidth={2.5} /> Back to Home
+          </Link>
+        </div>
+      )}
+
       <span className="rounded-xl border border-surface-yellow/50 bg-surface-yellow/30 px-4 py-2 text-xs font-bold uppercase tracking-wider text-accent-black">
         🚀 BVRIT HUB EXCLUSIVE
       </span>

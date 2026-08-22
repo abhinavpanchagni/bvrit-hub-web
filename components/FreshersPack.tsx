@@ -5,7 +5,6 @@ export default function FreshersPack() {
     "Attendance Rules",
     "Mid Exam Guide",
     "Semester Exams",
-    "Labs Overview",
     "VEDIC AI Guide",
     "ECAP Guide",
     "Transport",

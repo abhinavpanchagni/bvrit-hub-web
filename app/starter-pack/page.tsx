@@ -45,14 +45,6 @@ const chapters = [
   },
   {
     number: "06",
-    title: "Labs Overview",
-    description:
-      "Everything about labs, records, viva and practical sessions.",
-    href: "/starter-pack/labs",
-    color: "bg-surface-lavender",
-  },
-  {
-    number: "07",
     title: "VEDIC AI",
     description:
       "Attendance, assignments, quizzes and academic platform.",
@@ -60,7 +52,7 @@ const chapters = [
     color: "bg-surface-peach",
   },
   {
-    number: "08",
+    number: "07",
     title: "ECAP",
     description:
       "Results, fee payments and student portal guide.",
@@ -68,7 +60,7 @@ const chapters = [
     color: "bg-surface-yellow",
   },
   {
-    number: "09",
+    number: "08",
     title: "Transport",
     description:
       "Bus routes, fees and transport information.",
@@ -76,19 +68,27 @@ const chapters = [
     color: "bg-surface-mint",
   },
   {
-    number: "10",
+    number: "09",
     title: "Hostel",
     description:
       "Hostel life, facilities and important information.",
     href: "/starter-pack/hostel",
     color: "bg-surface-lavender",
   },
+  {
+    number: "10",
+    title: "Events",
+    description:
+      "Discover technical, cultural, and sports events happening around the campus.",
+    href: "/starter-pack/events",
+    color: "bg-surface-peach",
+  },
 ];
 
 export default function FreshersPage() {
   return (
     <main className="min-h-screen bg-bg text-text-primary">
-      <Hero />
+      <Hero showBackButton={true} />
 
       <section className="mx-auto max-w-7xl px-6 md:px-12 py-16 animate-fade-in-up">
         
