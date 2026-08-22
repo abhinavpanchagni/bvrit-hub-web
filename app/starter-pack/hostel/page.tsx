@@ -84,16 +84,24 @@ export default function HostelPage() {
           <div className="rounded-[2.5rem] border border-border/10 bg-surface-peach/40 p-8 shadow-sm">
 
             <h3 className="text-3xl font-extrabold">
-              👩 Girls' Hostel
+              👩 Girls' Hostels
             </h3>
 
-            <p className="mt-6 text-lg leading-9">
-              Separate girls' hostel with its own dining facility.
-            </p>
+            <div className="mt-6 space-y-5">
 
-            <p className="mt-5 text-lg leading-9">
-              Students from different years stay together.
-            </p>
+              <div className="rounded-2xl border border-border/10 shadow-sm border border-border/10 bg-white p-6">
+                <h4 className="text-xl font-extrabold">
+                  Pratibha & Spoorthy
+                </h4>
+
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-text-secondary">
+                  <li><strong>Room Types:</strong> 3 sharing and 6 sharing available.</li>
+                  <li><strong>Dining:</strong> The girls' hostels have their own dedicated dining hall.</li>
+                  <li>Students from different years stay together.</li>
+                </ul>
+              </div>
+
+            </div>
 
           </div>
 
@@ -227,21 +235,6 @@ export default function HostelPage() {
 
         </div>
 
-        <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-surface-yellow/40 p-10 shadow-sm">
-
-          <h3 className="text-4xl font-extrabold">
-            🎥 Hostel Tour
-          </h3>
-
-          <div className="mt-8 flex h-80 items-center justify-center rounded-2xl border border-border/10 shadow-sm border-4 border-dashed border-black bg-white">
-
-            <p className="text-center text-2xl font-extrabold">
-              Embed Hostel Tour Video Here
-            </p>
-
-          </div>
-
-        </div>
 
         <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-black p-10 text-bg shadow-[8px_8px_0_#0f766e]">
 

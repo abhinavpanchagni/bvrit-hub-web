@@ -30,7 +30,7 @@ const benefits = [
   "Continue where you left off",
   "Personalized Dashboard",
   "Future Study Packs",
-  "New Resource Notifications",
+  "New Feature Notifications",
 ];
 
 export default function GetStarted() {
@@ -59,7 +59,7 @@ export default function GetStarted() {
             </h3>
 
             <p className="text-lg text-text-secondary font-medium mb-10">
-              To access academic resources, simply login and follow this path.
+              To access the platform features, simply login and follow this path.
             </p>
 
             <div className="space-y-6 relative">

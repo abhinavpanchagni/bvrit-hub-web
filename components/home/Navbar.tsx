@@ -82,9 +82,6 @@ export default function Navbar() {
             <Link href="/freshers" className="text-text-primary hover:text-accent-blue transition-colors">
               Freshers
             </Link>
-            <Link href="/resources" className="text-text-primary hover:text-accent-blue transition-colors">
-              Resources
-            </Link>
             <Link href="/about" className="text-text-primary hover:text-accent-blue transition-colors">
               About
             </Link>
@@ -122,9 +119,6 @@ export default function Navbar() {
             <div className="bg-bg/95 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-border flex flex-col gap-6">
               <Link href="/freshers" onClick={() => setIsMobileMenuOpen(false)} className="text-text-primary font-medium text-lg hover:text-accent-blue transition-colors">
                 Freshers
-              </Link>
-              <Link href="/resources" onClick={() => setIsMobileMenuOpen(false)} className="text-text-primary font-medium text-lg hover:text-accent-blue transition-colors">
-                Resources
               </Link>
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-text-primary font-medium text-lg hover:text-accent-blue transition-colors">
                 About

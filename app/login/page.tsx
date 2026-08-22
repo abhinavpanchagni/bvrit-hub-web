@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { getURL } from "@/utils/url";
 import Link from "next/link";
 import { Check, AlertCircle } from "lucide-react";
 
@@ -29,7 +30,7 @@ export default function LoginPage() {
     const { error: loginError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=${next}`,
+        redirectTo: `${getURL()}/auth/callback?next=${next}`,
       },
     });
 
@@ -65,14 +66,14 @@ export default function LoginPage() {
               Welcome back to <br />your workspace.
             </h2>
             <p className="text-lg text-text-secondary font-medium mb-12 relative z-10">
-              Sign in to access your personalized academic resources, track your learning progress, and stay updated.
+              Sign in to access your personalized dashboard, connect with peers, and stay updated.
             </p>
 
             <ul className="space-y-4 relative z-10">
               {[
-                "Save your learning progress securely",
-                "Bookmark useful resources for exams",
-                "Resume your study packs anywhere"
+                "Connect with students across branches",
+                "Discover and join student clubs",
+                "Stay updated with community events"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-text-secondary font-medium">
                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-white/20">

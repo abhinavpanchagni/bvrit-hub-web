@@ -45,14 +45,6 @@ const chapters = [
   },
   {
     number: "06",
-    title: "Labs Overview",
-    description:
-      "Everything about labs, records, viva and practical sessions.",
-    href: "/freshers/labs",
-    color: "bg-surface-lavender",
-  },
-  {
-    number: "07",
     title: "VEDIC AI",
     description:
       "Attendance, assignments, quizzes and academic platform.",
@@ -60,7 +52,7 @@ const chapters = [
     color: "bg-surface-peach",
   },
   {
-    number: "08",
+    number: "07",
     title: "ECAP",
     description:
       "Results, fee payments and student portal guide.",
@@ -68,7 +60,7 @@ const chapters = [
     color: "bg-surface-yellow",
   },
   {
-    number: "09",
+    number: "08",
     title: "Transport",
     description:
       "Bus routes, fees and transport information.",
@@ -76,12 +68,20 @@ const chapters = [
     color: "bg-surface-mint",
   },
   {
-    number: "10",
+    number: "09",
     title: "Hostel",
     description:
       "Hostel life, facilities and important information.",
     href: "/freshers/hostel",
     color: "bg-surface-lavender",
+  },
+  {
+    number: "10",
+    title: "Events",
+    description:
+      "Discover technical, cultural, and sports events happening around the campus.",
+    href: "/freshers/events",
+    color: "bg-surface-peach",
   },
 ];
 

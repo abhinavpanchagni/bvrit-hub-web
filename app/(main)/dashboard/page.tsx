@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { User } from "lucide-react";
-import DashboardStats from "@/components/dashboard/DashboardStats";
+import MyTasksWidget from "@/components/dashboard/MyTasksWidget";
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -17,9 +17,15 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("branch, year, section")
+    .select("avatar_url, name, branch, year, section")
     .eq("id", user.id)
     .single();
+
+  const { data: tasks } = await supabase
+    .from("tasks")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
 
   return (
     <main className="min-h-full py-4 pb-12">
@@ -28,7 +34,7 @@ export default async function DashboardPage() {
         {/* Welcome */}
         <div className="bg-surface-lavender rounded-[2.5rem] p-8 lg:p-12 border border-border/10 mb-10 flex flex-col md:flex-row items-center gap-8 shadow-sm">
           <img
-            src={user.user_metadata.avatar_url || "https://api.dicebear.com/7.x/avataaars/svg?seed=fallback"}
+            src={profile?.avatar_url || user.user_metadata.avatar_url || "https://api.dicebear.com/7.x/avataaars/svg?seed=fallback"}
             alt="Avatar"
             className="h-28 w-28 rounded-full object-cover border-4 border-white/50 shadow-sm shrink-0"
           />
@@ -38,8 +44,8 @@ export default async function DashboardPage() {
               Welcome Back 👋
             </p>
 
-            <h1 className="text-4xl leading-tight md:text-5xl font-extrabold text-text-primary mb-1">
-              {user.user_metadata.full_name}
+            <h1 className="text-4xl leading-tight md:text-5xl font-extrabold text-text-primary mb-1 uppercase">
+              {profile?.name || user.user_metadata.full_name || "STUDENT"}
             </h1>
 
             <p className="text-text-secondary font-medium mb-6 text-sm">
@@ -60,26 +66,15 @@ export default async function DashboardPage() {
           </div>
         </div>
 
+
+
         {/* Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <DashboardStats />
 
-          <div className="bg-[#f0f0f0] rounded-[2rem] p-6 shadow-sm border border-border/10 transition-transform hover:-translate-y-1 flex flex-col justify-between group">
-            <div>
-               <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center text-accent-black mb-6 shadow-sm group-hover:scale-105 transition-transform">
-                 <User size={24} strokeWidth={2.5} />
-               </div>
-               <h2 className="text-2xl font-extrabold text-text-primary mb-1">Profile</h2>
-               <p className="text-text-secondary font-medium text-sm mb-6 truncate">
-                 {profile?.branch || "Setup Profile"}
-               </p>
-            </div>
-            <Link
-              href="/profile"
-              className="bg-accent-black text-bg font-bold text-sm rounded-xl hover:scale-[1.02] hover:shadow-md transition-all px-4 py-2.5 w-max"
-            >
-              Edit Profile
-            </Link>
+
+          {/* My Tasks Widget */}
+          <div className="md:col-span-2 lg:col-span-2 lg:row-span-2">
+            <MyTasksWidget initialTasks={tasks || []} />
           </div>
         </div>
 

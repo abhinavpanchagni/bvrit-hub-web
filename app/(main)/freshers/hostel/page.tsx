@@ -227,21 +227,6 @@ export default function HostelPage() {
 
         </div>
 
-        <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-surface-yellow/40 p-10 shadow-sm">
-
-          <h3 className="text-4xl font-extrabold">
-            🎥 Hostel Tour
-          </h3>
-
-          <div className="mt-8 flex h-80 items-center justify-center rounded-2xl border border-border/10 shadow-sm border-4 border-dashed border-black bg-white">
-
-            <p className="text-center text-2xl font-extrabold">
-              Embed Hostel Tour Video Here
-            </p>
-
-          </div>
-
-        </div>
 
         <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-black p-10 text-bg shadow-[8px_8px_0_#0f766e]">
 

@@ -1,23 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Library } from "lucide-react";
+import { ArrowRight, Library, CheckCircle2, XCircle, Loader2 } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 export default function RegisterPage() {
   const router = useRouter();
   
+  const supabase = createClient();
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [usernameStatus, setUsernameStatus] = useState<"idle" | "loading" | "available" | "taken">("idle");
   const [email, setEmail] = useState("");
   const [branch, setBranch] = useState("");
   const [year, setYear] = useState("1");
 
+  useEffect(() => {
+    if (!username.trim()) {
+      setUsernameStatus("idle");
+      return;
+    }
+    
+    setUsernameStatus("loading");
+    const timeoutId = setTimeout(async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("id")
+        .eq("username", username.trim())
+        .maybeSingle();
+        
+      if (data) {
+        setUsernameStatus("taken");
+      } else {
+        setUsernameStatus("available");
+      }
+    }, 500);
+    
+    return () => clearTimeout(timeoutId);
+  }, [username, supabase]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (usernameStatus === "taken" || usernameStatus === "loading") return;
+
     const registrationData = {
       name,
+      username: username.trim(),
       email,
       branch,
       year: parseInt(year)
@@ -52,7 +83,7 @@ export default function RegisterPage() {
               Start your <br />learning journey.
             </h2>
             <p className="text-lg text-text-secondary font-medium mb-12 max-w-md relative z-10">
-              Create a free account to unlock semester-wise resources, study packs, labs, and track your progress through engineering.
+              Create a free account to unlock community feed, networking hub, clubs, and track your college life through engineering.
             </p>
 
             <div className="bg-white/60 border border-white/20 rounded-3xl p-6 shadow-sm relative z-10 backdrop-blur-md">
@@ -60,7 +91,7 @@ export default function RegisterPage() {
                 <Library size={24} strokeWidth={2.5} />
               </div>
               <h3 className="text-xl font-bold text-text-primary mb-2">Built for Students</h3>
-              <p className="text-text-secondary font-medium text-sm">BVRIT Hub was created by students, for students. It simplifies finding academic resources, saving you hours of searching.</p>
+              <p className="text-text-secondary font-medium text-sm">BVRIT Hub was created by students, for students. It simplifies finding platform features, saving you hours of searching.</p>
             </div>
             
             {/* Abstract shapes inside the card */}
@@ -100,6 +131,31 @@ export default function RegisterPage() {
                   placeholder="e.g. John Doe"
                   className="w-full bg-white/50 border border-border/10 rounded-2xl px-4 py-3.5 text-text-primary font-medium text-sm placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 transition-all shadow-sm"
                 />
+              </div>
+
+              <div>
+                <label className="text-sm font-bold text-text-primary mb-1.5 block">Username</label>
+                <div className="relative">
+                  <input
+                    required
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
+                    placeholder="e.g. coder_john"
+                    className={`w-full bg-white/50 border rounded-2xl px-4 py-3.5 pr-12 text-text-primary font-medium text-sm placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 transition-all shadow-sm ${
+                      usernameStatus === 'taken' ? 'border-red-500 focus:ring-red-500/50' : 
+                      usernameStatus === 'available' ? 'border-green-500 focus:ring-green-500/50' : 
+                      'border-border/10 focus:ring-accent-blue/50'
+                    }`}
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                    {usernameStatus === 'loading' && <Loader2 size={18} className="animate-spin text-text-secondary" />}
+                    {usernameStatus === 'available' && <CheckCircle2 size={18} className="text-green-500" />}
+                    {usernameStatus === 'taken' && <XCircle size={18} className="text-red-500" />}
+                  </div>
+                </div>
+                {usernameStatus === 'taken' && <p className="text-xs text-red-500 font-bold mt-1.5 ml-1">This username is already taken.</p>}
+                {usernameStatus === 'available' && <p className="text-xs text-green-500 font-bold mt-1.5 ml-1">Username is available!</p>}
               </div>
 
               <div>
@@ -155,7 +211,8 @@ export default function RegisterPage() {
 
               <button
                 type="submit"
-                className="w-full bg-accent-black text-bg font-bold text-sm rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all px-6 py-4 flex items-center justify-center gap-2 mt-8 active:scale-95"
+                disabled={usernameStatus === 'taken' || usernameStatus === 'loading'}
+                className="w-full bg-accent-black text-bg font-bold text-sm rounded-2xl hover:scale-[1.02] hover:shadow-lg transition-all px-6 py-4 flex items-center justify-center gap-2 mt-8 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
               >
                 Continue Setup <ArrowRight size={18} />
               </button>

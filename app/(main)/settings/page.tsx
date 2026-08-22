@@ -1,8 +1,35 @@
 "use client";
 
-import { LogOut, Bell, Shield, Key } from "lucide-react";
+import { LogOut, Bell, Shield, Key, Trash2, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SettingsPage() {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const router = useRouter();
+
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+    if (!confirmed) return;
+
+    try {
+      setIsDeleting(true);
+      const res = await fetch("/api/account", {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete account");
+      }
+
+      // Redirect to login or home after deletion
+      router.push("/login");
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while deleting your account.");
+      setIsDeleting(false);
+    }
+  };
   return (
     <main className="flex min-h-full items-start justify-center py-8 pb-16">
       <div className="w-full max-w-3xl bg-white rounded-[2.5rem] shadow-sm border border-border/10 relative overflow-hidden">
@@ -25,7 +52,7 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between p-4 rounded-2xl border border-border/10 shadow-sm border border-border/10 bg-white">
                 <div>
                   <p className="font-bold text-text-primary">Email Notifications</p>
-                  <p className="text-sm text-text-secondary mt-1">Receive updates about new resources and events.</p>
+                  <p className="text-sm text-text-secondary mt-1">Receive updates about new features and events.</p>
                 </div>
                 <div className="w-12 h-6 bg-accent-blue rounded-full relative cursor-pointer">
                   <div className="w-4 h-4 bg-white rounded-full absolute right-1 top-1"></div>
@@ -36,10 +63,10 @@ export default function SettingsPage() {
 
 
 
-          {/* Danger Zone */}
+          {/* Account Management */}
           <div className="pt-8 border-t border-border/10">
             <h3 className="text-xl font-extrabold text-red-500 mb-6 flex items-center gap-2">
-              Danger Zone
+              Account Management
             </h3>
             
             <form action="/auth/signout" method="post">
@@ -48,6 +75,21 @@ export default function SettingsPage() {
                 Logout of BVRIT Hub
               </button>
             </form>
+
+            <div className="mt-4">
+              <button 
+                onClick={handleDeleteAccount}
+                disabled={isDeleting}
+                className="w-full bg-white text-red-500 font-bold text-sm rounded-2xl border border-red-200 shadow-sm hover:bg-red-50 transition-all px-6 py-4 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isDeleting ? (
+                  <Loader2 size={18} className="animate-spin" />
+                ) : (
+                  <Trash2 size={18} />
+                )}
+                {isDeleting ? "Deleting Account..." : "Delete Account"}
+              </button>
+            </div>
           </div>
 
         </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function TransportPage() {
   return (
@@ -22,8 +23,7 @@ export default function TransportPage() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-xl leading-9 text-orange-100">
-            Everything you need to know about the BVRIT bus facility, routes
-            and transport fees.
+            Everything you need to know about the BVRIT bus facility and routes.
           </p>
         </div>
       </section>
@@ -56,42 +56,20 @@ export default function TransportPage() {
             Refer to the route map below to find the bus covering your area.
           </p>
 
-          <div className="mt-8 flex h-96 items-center justify-center rounded-2xl border border-border/10 shadow-sm border-4 border-dashed border-black bg-white">
-
-            <p className="text-center text-2xl font-extrabold">
-              Bus Routes Image Here
-            </p>
-
+          <div className="mt-8 relative w-full overflow-hidden rounded-2xl border-4 border-black shadow-sm">
+            <Image 
+              src="/transport/bus-routes.jpeg" 
+              alt="BVRIT Bus Routes" 
+              width={1200}
+              height={1600}
+              className="w-full h-auto"
+              unoptimized
+            />
           </div>
 
         </div>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-
-          <div className="rounded-[2.5rem] border border-border/10 bg-surface-yellow/40 p-8 shadow-sm">
-
-            <h3 className="text-3xl font-extrabold">
-              💳 Transport Fee
-            </h3>
-
-            <div className="mt-8 rounded-2xl border border-border/10 shadow-sm border border-border/10 bg-white p-8 text-center">
-
-              <p className="text-5xl font-extrabold">
-                ₹45,000 – ₹50,000
-              </p>
-
-              <p className="mt-3 text-lg font-bold">
-                Per Year
-              </p>
-
-            </div>
-
-            <p className="mt-6 text-lg leading-8">
-              The exact fee depends on your boarding location and selected
-              route.
-            </p>
-
-          </div>
+        <div className="mt-10">
 
           <div className="rounded-[2.5rem] border border-border/10 bg-surface-mint/40 p-8 shadow-sm">
 
@@ -103,7 +81,6 @@ export default function TransportPage() {
               <li>Visit the College Reception / Transport Office.</li>
               <li>Select the suitable bus route.</li>
               <li>Complete the required formalities.</li>
-              <li>Pay the transport fee.</li>
             </ol>
 
           </div>
@@ -142,23 +119,13 @@ export default function TransportPage() {
                 <p className="mt-2">
                   Refer to the Bus Route image or visit the Transport Office.
                 </p>
-              </div>
-
-              <div className="rounded-xl border border-border/10 bg-white p-5">
-                <h4 className="font-extrabold">
-                  Can the transport fee change?
-                </h4>
-
-                <p className="mt-2">
-                  Yes. It depends on the selected route.
-                </p>
-              </div>
-
             </div>
 
           </div>
 
         </div>
+
+      </div>
 
         <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-black p-10 text-bg shadow-[8px_8px_0_#ea580c]">
 
@@ -168,8 +135,7 @@ export default function TransportPage() {
 
           <p className="mt-6 text-lg leading-9">
             The college bus service is one of the safest and easiest ways to
-            travel to campus. Visit the Transport Office for routes, timings
-            and fee details.
+            travel to campus. Visit the Transport Office for routes and timings.
           </p>
 
         </div>

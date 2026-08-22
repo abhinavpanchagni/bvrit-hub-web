@@ -20,7 +20,7 @@ export default function SemesterRoadmap() {
           </h2>
 
           <p className="mt-4 text-lg text-gray-700600">
-            Navigate semester by semester with organized resources.
+            Navigate semester by semester with organized subjects.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function SemesterRoadmap() {
               </h3>
 
               <p className="mt-3 text-gray-700600">
-                Notes, PYQs, Labs, Videos & Question Banks.
+                Syllabus, Chapters, and Subject Details.
               </p>
 
               <button className="mt-6 rounded-xl border-2 border-black bg-black px-5 py-2 font-bold text-white">

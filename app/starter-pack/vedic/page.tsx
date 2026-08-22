@@ -46,6 +46,26 @@ export default function VedicPage() {
           </p>
         </div>
 
+        <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-surface-lavender/40 p-10 shadow-sm">
+          <h2 className="text-4xl font-extrabold mb-6">
+            🌐 What is Vedic.dev?
+          </h2>
+          <p className="mt-6 text-lg leading-9 text-text-primary">
+            <a href="https://www.vedic.dev" target="_blank" rel="noopener noreferrer" className="text-accent-blue font-bold underline hover:text-cyan-700 transition-colors">Vedic.dev</a> is the next-generation learning and assessment platform for BVRIT and SVES students. 
+            While VEDIC AI is your daily academic portal, Vedic.dev focuses on skill development, coding practice, and technical assessments.
+          </p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-border/10 bg-white p-6 shadow-sm">
+              <h4 className="text-xl font-extrabold mb-2 text-accent-black">🎯 Purpose</h4>
+              <p className="text-text-secondary font-medium">Designed to improve your problem-solving skills through mock tests, coding assessments, and curated learning modules to prepare you for placements.</p>
+            </div>
+            <div className="rounded-2xl border border-border/10 bg-white p-6 shadow-sm">
+              <h4 className="text-xl font-extrabold mb-2 text-accent-black">🔗 Access</h4>
+              <p className="text-text-secondary font-medium">You can log in at <a href="https://www.vedic.dev/home/dashboard" target="_blank" rel="noopener noreferrer" className="text-accent-blue font-bold hover:underline">www.vedic.dev</a> using your official college credentials to track your performance and start practicing.</p>
+            </div>
+          </div>
+        </div>
+
         <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-surface-yellow/40 p-8 shadow-sm">
 
           <h3 className="text-4xl font-extrabold">
@@ -154,18 +174,44 @@ export default function VedicPage() {
 
         </div>
 
+        <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-white p-10 shadow-sm">
+          <h3 className="text-4xl font-extrabold flex items-center gap-3">
+            <span>🌐</span> Sri Vishnu Learning Management System (LMS)
+          </h3>
+          <p className="mt-6 text-lg leading-9 text-text-primary">
+            Sri Vishnu Learning Management System (LMS) helps institutes to provide online courses as part of their regular course curriculum and also offer complete online distance learning courses.
+          </p>
+          <div className="mt-8">
+            <a 
+              href="https://www.vishnulearning.com/login/index.php" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-cyan-600 px-8 py-4 text-sm font-bold text-white shadow-sm hover:scale-[1.02] transition-transform"
+            >
+              Access Vishnu LMS Portal
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
         <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-surface-yellow/40 p-10 shadow-sm">
 
           <h3 className="text-4xl font-extrabold">
             🎥 Video Walkthrough
           </h3>
 
-          <div className="mt-8 flex h-80 items-center justify-center rounded-2xl border border-border/10 shadow-sm border-4 border-dashed border-black bg-white">
-
-            <p className="text-center text-2xl font-extrabold">
-              Embed VEDIC AI Walkthrough Video Here
+          <div className="mt-8 flex flex-col items-center justify-center rounded-2xl border border-border/10 shadow-sm border-2 border-black bg-white p-12 text-center">
+            <p className="text-xl font-bold mb-6 text-text-secondary">
+              Watch the complete walkthrough video to understand how to use VEDIC AI effectively.
             </p>
-
+            <a 
+              href="https://drive.google.com/file/d/1AP3iHWHclYOnkqzbkPheKsQxZm1ekwkk/view?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-accent-black text-white font-bold text-lg px-8 py-5 rounded-2xl hover:scale-105 hover:shadow-xl transition-all shadow-md active:scale-95"
+            >
+              ▶ Watch VEDIC AI Walkthrough
+            </a>
           </div>
 
         </div>

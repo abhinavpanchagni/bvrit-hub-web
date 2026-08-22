@@ -1,22 +1,22 @@
 export default function Features() {
   const features = [
     {
-      title: "Semester Notes",
-      desc: "Well-organized notes for every subject.",
+      title: "Community Feed",
+      desc: "Connect and share with other BVRIT students.",
       color: "bg-yellow-300",
-      emoji: "📚",
+      emoji: "👥",
     },
     {
-      title: "Previous Papers",
-      desc: "Practice with university PYQs.",
+      title: "Clubs",
+      desc: "Discover and join student clubs.",
       color: "bg-pink-300",
-      emoji: "📝",
+      emoji: "🏆",
     },
     {
-      title: "Lab Programs",
-      desc: "Ready-to-run lab programs with outputs.",
+      title: "Networking",
+      desc: "Connect with students across branches.",
       color: "bg-green-300",
-      emoji: "💻",
+      emoji: "🤝",
     },
     {
       title: "Freshers Guide",
@@ -34,7 +34,7 @@ export default function Features() {
         </h2>
 
         <p className="mt-4 text-center text-gray-700600">
-          One platform. All your academic resources.
+          One platform. All your college life in one place.
         </p>
 
         <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">

@@ -146,6 +146,27 @@ export default function AttendancePage() {
         </div>
 
         <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-white p-8 shadow-sm md:p-10">
+          <h3 className="text-4xl font-extrabold flex items-center gap-3">
+            <span>📜</span> Official Academic Regulations (R-25)
+          </h3>
+          
+          <p className="mt-6 text-lg leading-9 text-text-primary">
+            This document outlines the comprehensive R-25 academic regulations for B.Tech students at BVRIT, effective from the 2025-26 academic year. It covers essential rules regarding course registration, minimum attendance requirements (75%), examination patterns, grading procedures, and promotion criteria.
+          </p>
+
+          <div className="mt-8">
+            <a 
+              href="/docs/R-25_Academic_Regulations.pdf" 
+              download
+              className="inline-flex items-center gap-2 rounded-2xl bg-accent-blue px-8 py-4 text-sm font-bold text-white shadow-sm hover:scale-[1.02] transition-transform"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Download Full R-25 PDF
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-10 rounded-[2.5rem] border border-border/10 bg-white p-8 shadow-sm md:p-10">
           <h3 className="text-4xl font-extrabold">
             ❓ Frequently Asked Questions
           </h3>
