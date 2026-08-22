@@ -27,27 +27,38 @@ BVRIT Hub is the ultimate, centralized digital sanctuary for engineering student
 
 ---
 
-## ✨ What's Inside? (Features)
+## ✨ What's Actually Inside? (Current Features)
 
-We didn't just build a file dump; we built a smart academic companion.
+We dug into the codebase to bring you an exact breakdown of what BVRIT Hub is currently powering! Here are the active features you'll find on the platform right now:
 
-🎒 **The Freshers Starter Pack**
+🎒 **Freshers Starter Pack (`/freshers`)**
 Your ultimate survival guide for Year 1. We cover the unspoken rules of campus, how to perfectly calculate your SGPA, navigating hostel life, and getting a headstart on your engineering journey.
 
-📚 **Semester-wise Academic Vault**
-No more last-minute scrambling. Access meticulously curated notes, Previous Year Question Papers (PYQs), comprehensive question banks, and essential study materials neatly organized by semester and subject.
+📖 **Before Class Prep (`/before-class`)**
+Subject-specific deep dives ready for you *before* you step into the lecture hall. Currently featuring rich resources for:
+- Engineering Mathematics, Physics, & Chemistry
+- Basic Electrical Engineering (BEE) & Electronic Devices
+- Programming for Problem Solving (PPS)
+- Engineering Drawing
+- Biology, English, and more!
 
-🧪 **Lab Manuals & Viva Guides**
-Master your practicals. Get access to detailed laboratory guides, step-by-step experiment instructions, and those tricky viva questions to keep you fully prepared for external exams.
+🛠️ **The Student Toolkit (`/toolkit`)**
+A collection of essential utilities designed specifically for engineering students, including quick calculators and study aids to keep you on track.
 
-🤖 **AI-Powered Learning Assistants**
-Stuck on a concept? BVRIT Hub comes integrated with intelligent AI assistants powered by industry-leading models (OpenAI, Google, Groq) to help you understand complex engineering topics in real-time.
+✅ **Task & Assignment Manager (`/tasks`)**
+Never miss a deadline again. BVRIT Hub comes with a built-in To-Do manager tailored for keeping track of your college assignments, lab records, and upcoming exams.
 
-👥 **Clubs & Communities Explorer**
-College is more than just academics. Discover, connect, and join various technical, cultural, social, and entrepreneurial communities on campus (like the *Vishnu Venture Labs Foundation*).
+🌐 **Campus Circle & Network (`/campus-circle`, `/network`)**
+College is about the people. Dive into the campus community, connect with your peers, and stay updated on the pulse of BVRIT.
 
-🎨 **Personalized Student Dashboard**
-Create an account to make the Hub truly yours. Save your learning progress, bookmark essential resources for finals week, and pick up right where you left off. 
+🎭 **Clubs Explorer (`/clubs`)**
+Discover and join various technical, cultural, social, and entrepreneurial communities on campus.
+
+💡 **Suggestions Hub (`/suggestions-hub`)**
+Built by students, driven by students. Have an idea for a new feature? Drop it in the Suggestions Hub and watch the community bring it to life.
+
+🎨 **Personalized Student Dashboard (`/dashboard`)**
+Create an account to make the Hub truly yours. Save your learning progress, manage your profile (`/profile`), tweak your preferences (`/settings`), and pick up right where you left off. 
 
 ---
 
@@ -56,10 +67,10 @@ Create an account to make the Hub truly yours. Save your learning progress, book
 BVRIT Hub is built on a modern, robust, and highly scalable technology stack to ensure a premium user experience.
 
 - **Core Framework**: [Next.js 16](https://nextjs.org/) (App Router) for blazing-fast performance and SEO.
-- **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL) for secure login, progress tracking, and rapid data delivery.
-- **AI Brain**: [Vercel AI SDK](https://sdk.vercel.ai/docs) powering our intelligent student assistants.
+- **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL) for secure login and data delivery.
+- **AI Brain**: [Vercel AI SDK](https://sdk.vercel.ai/docs) integrated under the hood for upcoming intelligent assistants.
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) wrapping a beautiful, custom Pastel Dashboard theme.
-- **Animations**: [Framer Motion](https://www.framer.com/motion/) bringing the platform to life with 3D logo intros and buttery-smooth page transitions.
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) bringing the platform to life with buttery-smooth page transitions.
 - **Icons**: [Lucide React](https://lucide.dev/) for crisp, consistent iconography.
 
 ---
