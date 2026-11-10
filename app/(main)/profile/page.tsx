@@ -3,13 +3,11 @@
 import { useEffect, useState, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
-import { User, Settings, Save, LogOut, Sun, Moon, Monitor, Loader2, CheckCircle2, XCircle, Camera } from "lucide-react";
+import { User, Save, Loader2, CheckCircle2, XCircle, Camera } from "lucide-react";
 
 export default function ProfilePage() {
   const supabase = createClient();
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
 
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("profile");

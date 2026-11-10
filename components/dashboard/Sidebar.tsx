@@ -1,151 +1,118 @@
 "use client";
 
+import type { User as SupabaseUser } from "@supabase/supabase-js";
+import { Compass, LayoutDashboard, ListTodo, Menu, Settings, User, Users, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import {
-  Rocket,
-  Users,
-  Settings,
-  Moon,
-  Sun,
-  LayoutDashboard,
-  User,
-  Menu,
-  X,
-  Trophy,
-  BookOpen,
-  MessageSquare,
-  Wrench,
-  ListTodo,
-  ShoppingBag
-} from "lucide-react";
 import { useEffect, useState } from "react";
 
-const navLinks = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Before Your First Class", href: "/before-class", icon: BookOpen },
-  { name: "Student Toolkit", href: "/toolkit", icon: Wrench },
-  { name: "Clubs", href: "/clubs", icon: Trophy },
-  { name: "Networking", href: "/network", icon: Users },
-  { name: "Campus Circle", href: "/campus-circle", icon: ShoppingBag },
-  { name: "Coming Soon", href: "/future-features", icon: Rocket },
-  { name: "Suggestions Hub", href: "/suggestions-hub", icon: MessageSquare },
+const primaryLinks = [
+  { name: "Home", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Explore", href: "/explore", icon: Compass },
+  { name: "Connect", href: "/network", icon: Users },
+  { name: "Profile", href: "/profile", icon: User },
 ];
 
-export default function Sidebar({ user }: { user: any }) {
+const secondaryLinks = [
+  { name: "Tasks", href: "/tasks", icon: ListTodo },
+  { name: "Settings", href: "/settings", icon: Settings },
+];
+
+export default function Sidebar({ user }: { user: SupabaseUser }) {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    if (!isMobileOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileOpen]);
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const closeMobileMenu = () => setIsMobileOpen(false);
 
   return (
     <>
-      {/* Mobile Header */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-border/10 shrink-0">
-        <Link href="/dashboard" className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 transition-transform hover:scale-105 active:scale-95 overflow-hidden">
-          <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
+      <div className="flex shrink-0 items-center justify-between border-b border-border/10 bg-white p-4 md:hidden">
+        <Link href="/dashboard" aria-label="BVRIT Hub home" className="flex items-center gap-2">
+          <img src="/logo.png" alt="" className="h-10 w-10 rounded-full border border-border/10 bg-white object-contain p-1.5" />
+          <span className="text-xs font-bold tracking-widest">BVRIT HUB</span>
         </Link>
         <button
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded={isMobileOpen}
+          aria-controls="student-navigation"
           onClick={() => setIsMobileOpen(true)}
-          className="p-2 rounded-xl bg-black/5 text-text-primary hover:bg-black/10:bg-white/10 transition-colors"
+          className="rounded-xl bg-black/5 p-2 text-text-primary transition-colors hover:bg-black/10"
         >
-          <Menu size={20} />
+          <Menu size={20} aria-hidden="true" />
         </button>
       </div>
 
-      {/* Mobile Overlay */}
-      {isMobileOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
-          onClick={() => setIsMobileOpen(false)}
-        />
-      )}
+      {isMobileOpen ? (
+        <button type="button" aria-label="Close navigation" className="fixed inset-0 z-40 bg-black/40 md:hidden" onClick={closeMobileMenu} />
+      ) : null}
 
-      {/* Sidebar */}
-      <aside className={`fixed md:relative top-0 left-0 h-full w-64 bg-white border-r border-border/10 flex flex-col p-4 shadow-xl md:shadow-sm z-50 transform transition-transform duration-300 ease-in-out ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
-
-        <button
-          onClick={() => setIsMobileOpen(false)}
-          className="md:hidden absolute top-4 right-4 p-2 rounded-xl bg-black/5 text-text-secondary hover:text-text-primary transition-colors"
-        >
-          <X size={20} />
+      <aside
+        id="student-navigation"
+        className={`fixed left-0 top-0 z-50 flex h-full w-64 flex-col overflow-y-auto border-r border-border/10 bg-white p-4 shadow-xl transition-transform duration-200 md:relative md:translate-x-0 md:shadow-sm ${isMobileOpen ? "translate-x-0" : "invisible -translate-x-full md:visible"}`}
+      >
+        <button type="button" aria-label="Close navigation" onClick={closeMobileMenu} className="absolute right-4 top-4 rounded-xl bg-black/5 p-2 text-text-secondary hover:text-text-primary md:hidden">
+          <X size={20} aria-hidden="true" />
         </button>
 
-        {/* Brand Logo */}
-        <Link href="/dashboard" className="flex items-end gap-1 mb-8 p-2 w-max">
-          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-border/10 overflow-hidden">
-            <img src="/logo.png" alt="BVRIT Hub Logo" className="w-full h-full object-contain p-1.5" />
-          </div>
-          <div className="ml-2 flex flex-col mb-1">
-            <span className="text-xs font-bold tracking-widest text-text-primary">BVRIT HUB</span>
-            <div className="h-[3px] w-full bg-accent-blue mt-[2px] rounded-full"></div>
-          </div>
+        <Link href="/dashboard" onClick={closeMobileMenu} className="mb-8 flex w-max items-end gap-2 p-2">
+          <img src="/logo.png" alt="" className="h-12 w-12 rounded-full border border-border/10 bg-white object-contain p-1.5" />
+          <span className="mb-1 text-xs font-bold tracking-widest">BVRIT HUB</span>
         </Link>
 
-        {/* Profile / Top */}
-        <Link href="/profile" className="flex items-center gap-3 p-3 mb-6 rounded-2xl hover:bg-black/5:bg-white/5 transition-all">
-          {user?.user_metadata?.avatar_url ? (
-            <img
-              src={user.user_metadata.avatar_url}
-              alt="Profile"
-              className="w-10 h-10 rounded-xl object-cover border border-border/10"
-            />
+        <div className="mb-6 flex items-center gap-3 px-3">
+          {user.user_metadata?.avatar_url ? (
+            <img src={user.user_metadata.avatar_url} alt="" className="h-10 w-10 rounded-xl border border-border/10 object-cover" />
           ) : (
-            <div className="w-10 h-10 rounded-xl bg-surface-lavender flex items-center justify-center text-accent-black font-bold border border-border/10 shadow-sm shrink-0">
-              {user?.email?.charAt(0).toUpperCase() || "U"}
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-lavender font-bold">
+              {user.email?.charAt(0).toUpperCase() || "U"}
             </div>
           )}
-          <div className="flex flex-col min-w-0">
-            <span className="font-bold text-text-primary text-sm truncate w-full">
-              {user?.user_metadata?.full_name || "BVRIT Student"}
-            </span>
-            <span className="text-text-secondary text-xs truncate w-full">
-              {user?.email || "student@gmail.com"}
-            </span>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-bold">{user.user_metadata?.full_name || "BVRIT Student"}</p>
+            <p className="truncate text-xs text-text-secondary">{user.email}</p>
           </div>
-        </Link>
+        </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 space-y-1">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[13px] transition-all ${isActive
-                    ? 'bg-accent-black text-bg shadow-sm'
-                    : 'text-text-secondary hover:bg-black/5:bg-white/5 hover:text-text-primary'
-                  }`}
-              >
-                <link.icon size={16} strokeWidth={isActive ? 2.5 : 2} />
-                {link.name}
-              </Link>
-            );
-          })}
+        <nav aria-label="Primary" className="flex-1 space-y-1">
+          {primaryLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={closeMobileMenu}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`flex items-center gap-3 rounded-xl px-4 py-2.5 text-[13px] font-medium transition-colors ${isActive(link.href) ? "bg-accent-black text-bg" : "text-text-secondary hover:bg-black/5 hover:text-text-primary"}`}
+            >
+              <link.icon size={17} aria-hidden="true" />
+              {link.name}
+            </Link>
+          ))}
         </nav>
 
-        {/* Bottom */}
-        <div className="mt-auto space-y-1 pt-4 border-t border-border/10">
-          <Link
-            href="/profile"
-            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[13px] transition-all ${pathname === '/profile' ? 'bg-black/5 text-text-primary' : 'text-text-secondary hover:bg-black/5:bg-white/5 hover:text-text-primary'}`}
-          >
-            <User size={16} strokeWidth={2} />
-            Profile
-          </Link>
-          <Link
-            href="/settings"
-            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[13px] transition-all ${pathname === '/settings' ? 'bg-black/5 text-text-primary' : 'text-text-secondary hover:bg-black/5:bg-white/5 hover:text-text-primary'}`}
-          >
-            <Settings size={16} strokeWidth={2} />
-            Settings
-          </Link>
-        </div>
+        <nav aria-label="Account" className="mt-6 space-y-1 border-t border-border/10 pt-4">
+          {secondaryLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={closeMobileMenu}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`flex items-center gap-3 rounded-xl px-4 py-2.5 text-[13px] font-medium transition-colors ${isActive(link.href) ? "bg-black/5 text-text-primary" : "text-text-secondary hover:bg-black/5 hover:text-text-primary"}`}
+            >
+              <link.icon size={17} aria-hidden="true" />
+              {link.name}
+            </Link>
+          ))}
+        </nav>
       </aside>
     </>
   );

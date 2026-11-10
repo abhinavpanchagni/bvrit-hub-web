@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { submitDoubt, getStudentDoubts } from "@/lib/doubts";
-import { MessageSquare, Clock, CheckCircle2, ChevronRight, Loader2, Plus, AlertCircle } from "lucide-react";
-import Link from "next/link";
+import { MessageSquare, Clock, CheckCircle2, Loader2, Plus, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
@@ -11,8 +10,17 @@ const categories = [
   "Placements", "Technical", "Website", "General"
 ];
 
+type StudentSuggestion = {
+  id: string;
+  category: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  doubt_messages: Array<{ message: string; created_at: string; sender_role: string }> | null;
+};
+
 export default function DoubtHubPage() {
-  const [doubts, setDoubts] = useState<any[]>([]);
+  const [doubts, setDoubts] = useState<StudentSuggestion[]>([]);
   const [loading, setLoading] = useState(true);
   
   const [category, setCategory] = useState(categories[0]);
@@ -50,8 +58,8 @@ export default function DoubtHubPage() {
       setQuestion("");
       setShowForm(false);
       await loadDoubts();
-    } catch (e: any) {
-      setError(e.message || "Failed to submit doubt.");
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Failed to submit suggestion.");
     } finally {
       setSubmitting(false);
     }
@@ -100,8 +108,9 @@ export default function DoubtHubPage() {
 
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-bold text-text-secondary uppercase tracking-wider mb-2">Category</label>
+                <label htmlFor="suggestion-category" className="block text-sm font-bold text-text-secondary uppercase tracking-wider mb-2">Category</label>
                 <select 
+                  id="suggestion-category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   className="w-full bg-surface-lavender border border-border/10 rounded-xl px-4 py-3 text-text-primary font-medium focus:outline-none focus:ring-2 focus:ring-accent-blue/50"
@@ -111,8 +120,9 @@ export default function DoubtHubPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-text-secondary uppercase tracking-wider mb-2">Your Suggestion</label>
+                <label htmlFor="suggestion-text" className="block text-sm font-bold text-text-secondary uppercase tracking-wider mb-2">Your Suggestion</label>
                 <textarea 
+                  id="suggestion-text"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   rows={4}
@@ -146,7 +156,7 @@ export default function DoubtHubPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-text-primary uppercase tracking-wider">My Suggestions</h2>
-          {showForm && (
+          {!showForm && (
             <button 
               onClick={() => setShowForm(true)}
               className="md:hidden flex items-center gap-2 bg-accent-black text-white px-4 py-2 rounded-xl font-semibold text-sm"
@@ -170,7 +180,7 @@ export default function DoubtHubPage() {
               Suggestions Hub
             </h1>
             <p className="text-text-secondary font-medium">
-              Got an idea to improve the college? Share it here and vote on others' suggestions.
+              Got an idea to improve the college? Share it here and follow the team&apos;s response.
             </p>
             {!showForm && (
               <button 
