@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Camera, MessageCircle, PenTool, User } from "lucide-react";
+import { Camera, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -22,8 +22,8 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="font-extrabold text-sm uppercase tracking-wider text-text-primary mb-2">Platform</h4>
             <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/">Home</Link>
-            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/about">About Us</Link>
-            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/starter-pack">Starter Pack</Link>
+            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/freshers">Freshers Guide</Link>
+            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/clubs">Explore</Link>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="font-extrabold text-sm uppercase tracking-wider text-text-primary mb-2">Account</h4>
@@ -33,7 +33,8 @@ export default function Footer() {
 
           <div className="flex flex-col gap-4">
             <h4 className="font-extrabold text-sm uppercase tracking-wider text-text-primary mb-2">Community</h4>
-            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/clubs">Clubs</Link>
+            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/network">Connect</Link>
+            <Link className="text-text-secondary hover:text-accent-blue font-medium transition-colors text-sm" href="/suggestions-hub">Suggestions</Link>
           </div>
           <div className="flex flex-col gap-4 lg:col-span-1">
             <h4 className="font-extrabold text-sm uppercase tracking-wider text-text-primary mb-2">Social</h4>
@@ -45,7 +46,7 @@ export default function Footer() {
             <Link className="text-text-secondary hover:text-accent-blue font-bold transition-colors text-sm" href="mailto:bvrithub@gmail.com">bvrithub@gmail.com</Link>
             <div className="mt-4 p-4 md:p-5 border border-border/10 rounded-2xl bg-surface-yellow/90 text-accent-black shadow-sm">
                <p className="font-extrabold text-sm mb-1">Have an idea or suggestion?</p>
-               <p className="font-medium text-xs opacity-80">We're building BVRIT Hub together with the student community.</p>
+               <p className="font-medium text-xs opacity-80">We&apos;re building BVRIT Hub together with the student community.</p>
             </div>
           </div>
         </div>

@@ -34,21 +34,13 @@ We dug into the codebase to bring you an exact breakdown of what BVRIT Hub is cu
 🎒 **Freshers Starter Pack (`/freshers`)**
 Your ultimate survival guide for Year 1. We cover the unspoken rules of campus, how to perfectly calculate your SGPA, navigating hostel life, and getting a headstart on your engineering journey.
 
-📖 **Before Class Prep (`/before-class`)**
-Subject-specific deep dives ready for you *before* you step into the lecture hall. Currently featuring rich resources for:
-- Engineering Mathematics, Physics, & Chemistry
-- Basic Electrical Engineering (BEE) & Electronic Devices
-- Programming for Problem Solving (PPS)
-- Engineering Drawing
-- Biology, English, and more!
-
 🛠️ **The Student Toolkit (`/toolkit`)**
 A collection of essential utilities designed specifically for engineering students, including quick calculators and study aids to keep you on track.
 
 ✅ **Task & Assignment Manager (`/tasks`)**
 Never miss a deadline again. BVRIT Hub comes with a built-in To-Do manager tailored for keeping track of your college assignments, lab records, and upcoming exams.
 
-🌐 **Campus Circle & Network (`/campus-circle`, `/network`)**
+🌐 **Student Network (`/network`)**
 College is about the people. Dive into the campus community, connect with your peers, and stay updated on the pulse of BVRIT.
 
 🎭 **Clubs Explorer (`/clubs`)**

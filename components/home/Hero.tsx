@@ -64,7 +64,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/starter-pack"
+              href="/freshers"
               className="w-full sm:w-auto text-center bg-surface-lavender text-accent-black rounded-full px-8 py-4 font-bold text-lg hover:scale-[1.03] shadow-md hover:shadow-lg transition-all active:scale-95 border border-border/10"
             >
               Start as a Fresher →

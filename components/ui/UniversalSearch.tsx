@@ -1,45 +1,43 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Search, Command, X, BookOpen, LayoutDashboard, Settings as SettingsIcon, MessageCircle, FileText, ArrowRight, CheckSquare, Users, Briefcase, GraduationCap } from "lucide-react";
+import { Search, Command, X, LayoutDashboard, Settings as SettingsIcon, MessageCircle, ArrowRight, CheckSquare, Users, Briefcase, GraduationCap, Compass, Trophy } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-// Create search database with core features and before-class subjects
 const searchDatabase = [
-  // Core Features
   { name: "Dashboard", href: "/dashboard", icon: <LayoutDashboard className="w-4 h-4" />, type: "Feature", keywords: "home main" },
+  { name: "Explore", href: "/explore", icon: <Compass className="w-4 h-4" />, type: "Discover", keywords: "freshers tools clubs suggestions campus" },
   { name: "My Tasks", href: "/tasks", icon: <CheckSquare className="w-4 h-4" />, type: "Feature", keywords: "todo assignments lists" },
   { name: "Suggestions Hub", href: "/suggestions-hub", icon: <MessageCircle className="w-4 h-4" />, type: "Community", keywords: "suggestions feedback ideas college" },
-  { name: "Clubs & Communities", href: "/clubs", icon: <Users className="w-4 h-4" />, type: "Community", keywords: "groups organizations" },
-  { name: "Network", href: "/network", icon: <Users className="w-4 h-4" />, type: "Community", keywords: "alumni students connect" },
+  { name: "Clubs & Communities", href: "/clubs", icon: <Trophy className="w-4 h-4" />, type: "Explore", keywords: "groups organizations" },
+  { name: "Connect", href: "/network", icon: <Users className="w-4 h-4" />, type: "Community", keywords: "network teams teammates students connect" },
   { name: "Freshers Pack", href: "/freshers", icon: <GraduationCap className="w-4 h-4" />, type: "Resources", keywords: "first year guide" },
   { name: "Toolkit", href: "/toolkit", icon: <Briefcase className="w-4 h-4" />, type: "Tools", keywords: "cgpa calculator apps" },
   { name: "Profile", href: "/profile", icon: <Users className="w-4 h-4" />, type: "Settings", keywords: "account user details" },
   { name: "Settings", href: "/settings", icon: <SettingsIcon className="w-4 h-4" />, type: "Settings", keywords: "preferences configuration" },
-  
-  // Before Class Subjects
-  { name: "Advanced Engineering Physics", href: "/before-class/advanced-engineering-physics", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "physics subject prerequisite" },
-  { name: "Basic Electrical Engineering", href: "/before-class/basic-electrical-engineering", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "bee electrical subject prerequisite" },
-  { name: "Electronic Devices & Circuits", href: "/before-class/electronic-devices-circuits", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "edc electronics subject prerequisite" },
-  { name: "Engineering Chemistry", href: "/before-class/engineering-chemistry", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "chemistry subject prerequisite" },
-  { name: "Engineering Drawing", href: "/before-class/engineering-drawing", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "drawing cad ed subject prerequisite" },
-  { name: "Engineering Mathematics", href: "/before-class/engineering-mathematics", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", prerequisites: true, keywords: "maths calculus algebra subject prerequisite" },
-  { name: "English for Skill Enhancement", href: "/before-class/english-for-skill-enhancement", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "english grammar communication subject prerequisite" },
-  { name: "Programming for Problem Solving", href: "/before-class/programming-for-problem-solving", icon: <BookOpen className="w-4 h-4" />, type: "Before Class", keywords: "pps c programming code subject prerequisite" },
 ];
 
 export default function UniversalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
+
+  const closeSearch = () => {
+    setIsOpen(false);
+    setQuery("");
+    window.setTimeout(() => triggerRef.current?.focus(), 0);
+  };
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setIsOpen((open) => !open);
+      } else if (e.key === "Escape") {
+        setIsOpen(false);
       }
     };
     document.addEventListener("keydown", down);
@@ -49,8 +47,6 @@ export default function UniversalSearch() {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 100);
-    } else {
-      setQuery("");
     }
   }, [isOpen]);
 
@@ -63,7 +59,7 @@ export default function UniversalSearch() {
       }).slice(0, 8); // Limit to 8 results
 
   const handleSelect = (href: string) => {
-    setIsOpen(false);
+    closeSearch();
     router.push(href);
   };
 
@@ -71,6 +67,10 @@ export default function UniversalSearch() {
     <>
       {/* Less Transparent Button */}
       <button
+        ref={triggerRef}
+        type="button"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-3 px-5 py-2.5 w-full max-w-lg bg-white/90 hover:bg-white backdrop-blur-sm border border-border shadow-sm rounded-full transition-all duration-300 group"
       >
@@ -92,31 +92,38 @@ export default function UniversalSearch() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
+              onClick={closeSearch}
               className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             />
 
             {/* Modal */}
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="universal-search-title"
               initial={{ opacity: 0, scale: 0.95, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="relative w-full max-w-2xl bg-white/95 backdrop-blur-md border border-border shadow-xl rounded-2xl overflow-hidden flex flex-col"
             >
+              <h2 id="universal-search-title" className="sr-only">Search BVRIT Hub</h2>
               {/* Search Input Area */}
               <div className="flex items-center px-4 py-4 border-b border-border bg-white">
                 <Search className="w-6 h-6 text-accent-blue mr-3" />
                 <input
                   ref={inputRef}
                   type="text"
-                  placeholder="Search subjects, clubs, or pages..."
+                  aria-label="Search BVRIT Hub"
+                  placeholder="Search features, clubs, or pages..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="flex-1 bg-transparent text-lg text-text-primary outline-none placeholder:text-text-secondary/70"
                 />
                 <button
-                  onClick={() => setIsOpen(false)}
+                  type="button"
+                  aria-label="Close search"
+                  onClick={closeSearch}
                   className="p-1 rounded-full hover:bg-black/5 text-text-secondary transition-colors"
                 >
                   <X className="w-5 h-5" />
@@ -161,7 +168,7 @@ export default function UniversalSearch() {
                 ) : (
                   <div className="py-14 text-center text-text-secondary">
                     <Search className="w-12 h-12 mx-auto mb-4 opacity-20" />
-                    <p>No results found for "{query}"</p>
+                    <p>No results found for &ldquo;{query}&rdquo;</p>
                   </div>
                 )}
               </div>
@@ -169,8 +176,7 @@ export default function UniversalSearch() {
               {/* Footer */}
               <div className="px-4 py-3 border-t border-border bg-bg/50 text-xs text-text-secondary/80 flex justify-between items-center hidden sm:flex">
                 <div className="flex items-center gap-2">
-                  <span>Use <kbd className="px-1 py-0.5 rounded bg-white border border-border shadow-sm">↑</kbd> <kbd className="px-1 py-0.5 rounded bg-white border border-border shadow-sm">↓</kbd> to navigate</span>
-                  <span className="ml-2">Use <kbd className="px-1 py-0.5 rounded bg-white border border-border shadow-sm">Enter</kbd> to select</span>
+                  <span>Press <kbd className="px-1 py-0.5 rounded bg-white border border-border shadow-sm">Esc</kbd> to close</span>
                 </div>
                 <div className="font-medium text-accent-blue/70">BVRIT Hub Search</div>
               </div>

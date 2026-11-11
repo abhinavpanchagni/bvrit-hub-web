@@ -33,21 +33,21 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex flex-col md:flex-row h-screen overflow-hidden bg-bg text-text-primary selection:bg-accent-blue/20 selection:text-text-primary">
+    <div className="flex min-h-dvh flex-col bg-bg text-text-primary md:h-dvh md:flex-row md:overflow-hidden">
       {/* Sidebar */}
       <Sidebar user={user} />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden relative">
+      <div className="relative flex min-h-0 min-w-0 flex-1 flex-col md:h-full md:overflow-hidden">
         {/* Top Navbar */}
-        <header className="h-20 shrink-0 border-b border-border bg-bg/90 backdrop-blur-md flex items-center justify-center px-4 sm:px-6 relative z-10 shadow-sm">
-          <div className="w-full max-w-2xl flex justify-center">
+        <header className="relative z-10 flex h-16 shrink-0 items-center border-b border-border/80 bg-white px-4 sm:px-6 md:h-[72px]">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-center md:justify-end">
             <UniversalSearch />
           </div>
         </header>
 
-        <main className="flex-1 h-full overflow-auto p-4 md:p-8">
-          <div className="max-w-6xl mx-auto h-full">
+        <main id="main-content" className="app-scrollbar min-h-0 flex-1 p-4 sm:p-6 md:overflow-y-auto md:p-8">
+          <div className="mx-auto w-full max-w-6xl">
             {children}
           </div>
         </main>

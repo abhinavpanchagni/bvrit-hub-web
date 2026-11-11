@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useOptimistic, useTransition } from "react";
-import { CheckCircle2, Circle, ArrowUpRight, ArrowRight, ListTodo, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useTransition } from "react";
+import { CheckCircle2, Circle, ArrowUpRight, ArrowRight, ListTodo } from "lucide-react";
 import { toggleTaskCompletion } from "@/lib/actions/tasks";
 import Link from "next/link";
 
@@ -23,18 +22,18 @@ interface MyTasksWidgetProps {
 
 export default function MyTasksWidget({ initialTasks }: MyTasksWidgetProps) {
   const [tasks, setTasks] = useState(initialTasks);
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const handleToggle = async (taskId: string, currentStatus: boolean) => {
     // Optimistic UI update
-    setTasks(tasks.map(t => t.id === taskId ? { ...t, completed: !currentStatus } : t));
+    setTasks(currentTasks => currentTasks.map(t => t.id === taskId ? { ...t, completed: !currentStatus } : t));
     
     // Background Server Action
     startTransition(async () => {
       const res = await toggleTaskCompletion(taskId, !currentStatus);
       if (!res.success) {
         // Revert on failure
-        setTasks(tasks.map(t => t.id === taskId ? { ...t, completed: currentStatus } : t));
+        setTasks(currentTasks => currentTasks.map(t => t.id === taskId ? { ...t, completed: currentStatus } : t));
       }
     });
   };

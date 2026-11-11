@@ -38,10 +38,12 @@ export const updateSession = async (request: NextRequest) => {
 
   const protectedRoutes = [
     '/dashboard',
-    '/dashboard-admin',
-    '/resources',
+    '/explore',
     '/freshers',
+    '/toolkit',
     '/clubs',
+    '/network',
+    '/tasks',
     '/settings',
     '/profile',
     '/suggestions-hub' // Protect student suggestions hub too
